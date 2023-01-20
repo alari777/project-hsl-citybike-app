@@ -10,6 +10,21 @@ import { CreateStationsDTO } from "@/pages/api/v1/download/dto/createStations.dt
 import { downloadCsv } from "@/pages/api/v1/download/helpers/dowloadCsv";
 const prisma = new PrismaClient();
 
+type StationType = {
+  id: number;
+  nameFi: string;
+  nameSwe: string;
+  nameEn: string;
+  addressFi: string;
+  addressSwe: string;
+  cityFi: string;
+  citySwe: string;
+  operator: string;
+  capacities: number;
+  coordinateX: number;
+  coordinateY: number;
+};
+
 // This class is for download csv file by remote URL
 class DownloadStations {
   // POST /v1/download/station
