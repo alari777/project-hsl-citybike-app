@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,4 +5,38 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Stations {
+  fid                                      Int     @id @default(autoincrement())
+  id                                       Int     @unique
+  nameFi                                   String
+  nameSwe                                  String
+  nameEn                                   String
+  addressFi                                String
+  addressSwe                               String
+  cityFi                                   String?
+  citySwe                                  String?
+  operator                                 String?
+  capacities                               Int
+  coordinateX                              Decimal @db.Decimal(16, 14)
+  coordinateY                              Decimal @db.Decimal(16, 14)
+  Trips_Trips_departureStationIdToStations Trips[] @relation("Trips_departureStationIdToStations")
+  Trips_Trips_returnStationIdToStations    Trips[] @relation("Trips_returnStationIdToStations")
+}
+
+model Trips {
+  id                                          Int      @id @default(autoincrement())
+  coveredDistance                             Decimal  @db.Decimal(10, 2)
+  duration                                    Decimal  @db.Decimal(10, 2)
+  departureStationId                          Int
+  returnStationId                             Int
+  departureDate                               DateTime @db.DateTime(0)
+  returnDate                                  DateTime @db.DateTime(0)
+  Stations_Trips_departureStationIdToStations Stations @relation("Trips_departureStationIdToStations", fields: [departureStationId], references: [id])
+  Stations_Trips_returnStationIdToStations    Stations @relation("Trips_returnStationIdToStations", fields: [returnStationId], references: [id])
+
+  @@index([departureStationId], map: "Trips_departureStationId_fkey")
+  @@index([returnStationId], map: "Trips_returnStationId_fkey")
+  @@index([coveredDistance, duration], map: "coveredDistance_duration")
 }
