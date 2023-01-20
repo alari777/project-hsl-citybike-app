@@ -14,7 +14,10 @@ class DownloadStations {
   @Post()
   @HttpCode(201)
   async createStations(@Body(ValidationPipe) body: CreateStationsDTO) {
-    await downloadCsv(body);
+    const stations: { data: string[] } = await downloadCsv(body);
+    // Will be refactored after adding `prisma orm`
+    console.log(stations.data.length);
+    stations.data.map(async (station: any, index: number) => {});
     return 12;
   }
 }
