@@ -32,9 +32,28 @@ class DownloadStations {
   @HttpCode(201)
   async createStations(@Body(ValidationPipe) body: CreateStationsDTO) {
     const stations: { data: string[] } = await downloadCsv(body);
-    // Will be refactored after adding `prisma orm`
-    console.log(stations.data.length);
-    stations.data.map(async (station: any, index: number) => {});
+    const prepareArr: StationType[] = [];
+    stations.data.map(async (station: any) => {
+      if (!isNaN(Number(station[1]))) {
+        prepareArr.push({
+          id: Number(station[1]),
+          nameFi: station[2],
+          nameSwe: station[3],
+          nameEn: station[4],
+          addressFi: station[5],
+          addressSwe: station[6],
+          cityFi: station[7],
+          citySwe: station[8],
+          operator: station[9],
+          capacities: Number(station[10]),
+          coordinateX: parseFloat(station[11]),
+          coordinateY: parseFloat(station[12]),
+        });
+      } else {
+        console.log(station);
+      }
+    });
+
     return 12;
   }
 }
