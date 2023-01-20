@@ -11,7 +11,7 @@ class DownloadStations {
   // POST /v1/download/station
   @Post()
   @HttpCode(201)
-  async stations(@Body(ValidationPipe) body: any) {
+  async createStations(@Body(ValidationPipe) body: any) {
     return 12;
   }
 }
