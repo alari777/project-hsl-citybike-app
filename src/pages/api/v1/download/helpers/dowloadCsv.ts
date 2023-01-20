@@ -5,15 +5,14 @@ type DownloadCsvType = {
   data: string[];
 };
 
-type JsonBodyType = {
+type BodyType = {
   url: string;
 };
 
 // This function downloads remote CSV file
-export async function DownloadCsv(body: string): Promise<DownloadCsvType> {
+export async function downloadCsv(body: BodyType): Promise<DownloadCsvType> {
   try {
-    const jsonBody: JsonBodyType = JSON.parse(body);
-    const { url } = jsonBody;
+    const { url } = body;
     const response = await fetch(url, {
       method: "GET",
       headers: {
