@@ -1,3 +1,4 @@
+import { PrismaClient } from "@prisma/client";
 import {
   Body,
   createHandler,
@@ -7,6 +8,7 @@ import {
 } from "next-api-decorators";
 import { CreateStationsDTO } from "@/pages/api/v1/download/dto/createStations.dto";
 import { downloadCsv } from "@/pages/api/v1/download/helpers/dowloadCsv";
+const prisma = new PrismaClient();
 
 // This class is for download csv file by remote URL
 class DownloadStations {
