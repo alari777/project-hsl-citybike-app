@@ -6,8 +6,8 @@ import {
   Post,
   ValidationPipe,
 } from "next-api-decorators";
-import { CreateStationsDTO } from "@/pages/api/v1/download/dto/createStations.dto";
-import { downloadCsv } from "@/pages/api/v1/download/helpers/dowloadCsv";
+import { CreateStationsDTO } from "@/pages/api/v1/download/stations/dto/createStations.dto";
+import { downloadCsv } from "@/pages/api/v1/download/stations/helpers/dowloadCsv";
 const prisma = new PrismaClient();
 
 type StationType = {
