@@ -9,6 +9,7 @@ import {
 import { CreateStationsDTO } from "@/pages/api/v1/download/stations/dto/createStations.dto";
 import { downloadCsv } from "@/pages/api/v1/download/stations/helpers/dowloadCsv";
 import { prepareData } from "@/pages/api/v1/download/stations/helpers/prepareData";
+import { DownloadCsvType } from "@/pages/api/v1/download/stations/types/download.stations.types";
 const prisma = new PrismaClient();
 
 // This class is for download csv file by remote URL
@@ -17,7 +18,7 @@ class DownloadStations {
   @Post()
   @HttpCode(201)
   async createStations(@Body(ValidationPipe) body: CreateStationsDTO) {
-    const stations: { data: string[] } = await downloadCsv(body);
+    const stations: DownloadCsvType = await downloadCsv(body);
     const data = prepareData(stations);
     const result = await prisma.stations.createMany({
       data,
