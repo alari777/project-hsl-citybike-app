@@ -53,8 +53,11 @@ class DownloadStations {
         console.log(station);
       }
     });
-
-    return 12;
+    const result = await prisma.stations.createMany({
+      data: prepareArr,
+    });
+    await prisma.$disconnect();
+    return result;
   }
 }
 
