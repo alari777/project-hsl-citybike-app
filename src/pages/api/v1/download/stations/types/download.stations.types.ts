@@ -12,3 +12,7 @@ export type StationType = {
   coordinateX: number;
   coordinateY: number;
 };
+
+export type DownloadCsvType = {
+  data: string[];
+};
