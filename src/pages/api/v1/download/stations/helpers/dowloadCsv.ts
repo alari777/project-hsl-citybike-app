@@ -1,13 +1,9 @@
 import * as Papa from "papaparse";
 import { InternalServerErrorException } from "next-api-decorators";
-
-type DownloadCsvType = {
-  data: string[];
-};
-
-type BodyType = {
-  url: string;
-};
+import {
+  BodyType,
+  DownloadCsvType,
+} from "@/pages/api/v1/download/stations/types/download.stations.types";
 
 // This function downloads remote CSV file
 export async function downloadCsv(body: BodyType): Promise<DownloadCsvType> {
