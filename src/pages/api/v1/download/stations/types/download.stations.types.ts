@@ -16,3 +16,7 @@ export type StationType = {
 export type DownloadCsvType = {
   data: string[];
 };
+
+export type BodyType = {
+  url: string;
+};
