@@ -11,6 +11,7 @@ import {
   ValidationPipe,
 } from 'next-api-decorators';
 import { PrismaClient } from '@prisma/client';
+import { CreateTripDTO } from '@/pages/api/v1/trip/dto/createTrip.dto';
 
 const prisma = new PrismaClient();
 
@@ -39,7 +40,15 @@ class Trip {
   // POST /api/v1/trip/trip
   @Post()
   @HttpCode(201)
-  async createTrip(@Body(ValidationPipe) body: any) {}
+  async createTrip(@Body(ValidationPipe) body: CreateTripDTO) {
+    const result = await prisma.trips.create({
+      data: body,
+    });
+
+    await prisma.$disconnect();
+
+    return result;
+  }
 
   // DELETE /api/v1/trip/trip
   @Delete()
