@@ -12,6 +12,7 @@ import {
 } from 'next-api-decorators';
 import { PrismaClient } from '@prisma/client';
 import { CreateStationDTO } from '@/pages/api/v1/station/dto/createStation.dto';
+import { DeleteStationDTO } from '@/pages/api/v1/download/stations/dto/deleteStation.dto';
 
 const prisma = new PrismaClient();
 
@@ -53,7 +54,18 @@ class Station {
   // DELETE /api/v1/station/station
   @Delete()
   @HttpCode(201)
-  async deleteStation(@Body(ValidationPipe) body: any) {}
+  async deleteStation(@Body(ValidationPipe) body: DeleteStationDTO) {
+    const { fid } = body;
+    const result = await prisma.stations.delete({
+      where: {
+        fid,
+      },
+    });
+
+    await prisma.$disconnect();
+
+    return result;
+  }
 
   // PATCH /api/v1/station/station
   @Patch()
