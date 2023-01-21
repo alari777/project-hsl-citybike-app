@@ -5,6 +5,9 @@ import {
   Post,
   ValidationPipe,
 } from "next-api-decorators";
+import { downloadTripsCsv } from "@/pages/api/v1/download/trips/helpers/downloadTripsCsv";
+import { loadDataInfileToDB } from "@/pages/api/v1/download/trips/helpers/loadDataInfileToDB";
+import { createTripsCsvFile } from "@/pages/api/v1/download/trips/helpers/createTripsCsvFile";
 
 class DownloadTrips {
   @Post()
@@ -12,7 +15,7 @@ class DownloadTrips {
   async createTrips(@Body(ValidationPipe) body: any) {
     const { url } = body;
     const csvText = await downloadTripsCsv(url);
-    await createNewCsvFile(csvText);
+    await createTripsCsvFile(csvText);
     const result = await loadDataInfileToDB();
 
     return {
