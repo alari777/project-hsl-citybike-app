@@ -12,6 +12,7 @@ import {
 } from 'next-api-decorators';
 import { PrismaClient } from '@prisma/client';
 import { CreateTripDTO } from '@/pages/api/v1/trip/dto/createTrip.dto';
+import { DeleteTripDTO } from '@/pages/api/v1/trip/dto/deleteTrip.dto';
 
 const prisma = new PrismaClient();
 
@@ -53,7 +54,18 @@ class Trip {
   // DELETE /api/v1/trip/trip
   @Delete()
   @HttpCode(201)
-  async deleteTrip(@Body(ValidationPipe) body: any) {}
+  async deleteTrip(@Body(ValidationPipe) body: DeleteTripDTO) {
+    const { id } = body;
+    const result = await prisma.trips.delete({
+      where: {
+        id,
+      },
+    });
+
+    await prisma.$disconnect();
+
+    return result;
+  }
 
   // PATCH /api/v1/trip/trip
   @Patch()
