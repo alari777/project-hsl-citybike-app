@@ -11,6 +11,7 @@ import {
   ValidationPipe,
 } from 'next-api-decorators';
 import { PrismaClient } from '@prisma/client';
+import { CreateStationDTO } from '@/pages/api/v1/station/dto/createStation.dto';
 
 const prisma = new PrismaClient();
 
@@ -39,7 +40,15 @@ class Station {
   // POST /api/v1/station/station
   @Post()
   @HttpCode(201)
-  async createStation(@Body(ValidationPipe) body: any) {}
+  async createStation(@Body(ValidationPipe) body: CreateStationDTO) {
+    const result = await prisma.stations.create({
+      data: body,
+    });
+
+    await prisma.$disconnect();
+
+    return result;
+  }
 
   // DELETE /api/v1/station/station
   @Delete()
