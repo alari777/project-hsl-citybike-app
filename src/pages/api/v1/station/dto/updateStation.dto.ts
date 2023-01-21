@@ -1,7 +1,7 @@
 import {
-  IsDecimal,
   IsNotEmpty,
   IsNumber,
+  IsOptional,
   IsString,
   Min,
 } from 'class-validator';
@@ -12,50 +12,56 @@ export class UpdateStationDTO {
   @Min(1)
   public fid!: number;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   public nameFi?: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   public nameSwe?: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   public nameEn?: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   public addressFi?: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   public addressSwe?: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   public cityFi?: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   public citySwe?: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   public operator?: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsNumber()
   @Min(0)
   public capacities?: number;
 
-  @IsNotEmpty()
-  @IsDecimal()
-  @Min(0)
+  @IsOptional()
+  @IsNumber({
+    allowInfinity: false,
+    allowNaN: false,
+    maxDecimalPlaces: 14,
+  })
   public coordinateX?: number;
 
-  @IsNotEmpty()
-  @IsDecimal()
-  @Min(0)
+  @IsOptional()
+  @IsNumber({
+    allowInfinity: false,
+    allowNaN: false,
+    maxDecimalPlaces: 14,
+  })
   public coordinateY?: number;
 }
