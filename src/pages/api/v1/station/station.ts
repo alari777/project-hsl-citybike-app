@@ -13,6 +13,7 @@ import {
 import { PrismaClient } from '@prisma/client';
 import { CreateStationDTO } from '@/pages/api/v1/station/dto/createStation.dto';
 import { DeleteStationDTO } from '@/pages/api/v1/download/stations/dto/deleteStation.dto';
+import { UpdateStationDTO } from '@/pages/api/v1/station/dto/updateStation.dto';
 
 const prisma = new PrismaClient();
 
@@ -70,7 +71,21 @@ class Station {
   // PATCH /api/v1/station/station
   @Patch()
   @HttpCode(201)
-  async updateStation(@Body(ValidationPipe) body: any) {}
+  async updateStation(@Body(ValidationPipe) body: UpdateStationDTO) {
+    const { fid } = body;
+    const result = await prisma.stations.update({
+      where: {
+        fid,
+      },
+      data: {
+        ...body,
+      },
+    });
+
+    await prisma.$disconnect();
+
+    return result;
+  }
 }
 
 export default createHandler(Station);
