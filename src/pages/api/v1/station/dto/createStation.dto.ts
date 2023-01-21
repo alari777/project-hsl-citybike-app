@@ -50,12 +50,18 @@ export class CreateStationDTO {
   public capacities!: number;
 
   @IsNotEmpty()
-  @IsDecimal()
-  @Min(0)
+  @IsNumber({
+    allowInfinity: false,
+    allowNaN: false,
+    maxDecimalPlaces: 14,
+  })
   public coordinateX!: number;
 
   @IsNotEmpty()
-  @IsDecimal()
-  @Min(0)
+  @IsNumber({
+    allowInfinity: false,
+    allowNaN: false,
+    maxDecimalPlaces: 14,
+  })
   public coordinateY!: number;
 }
