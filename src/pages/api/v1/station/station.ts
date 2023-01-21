@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   HttpCode,
+  Patch,
   Post,
   Query,
   ValidationPipe,
@@ -23,6 +24,11 @@ class Station {
   @Delete()
   @HttpCode(201)
   async deleteStation(@Body(ValidationPipe) body: any) {}
+
+  // PATCH /api/v1/station/station
+  @Patch()
+  @HttpCode(201)
+  async updateStation(@Body(ValidationPipe) body: any) {}
 }
 
 export default createHandler(Station);
