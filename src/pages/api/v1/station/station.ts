@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   HttpCode,
+  NotFoundException,
   Patch,
   Post,
   Query,
@@ -16,7 +17,24 @@ const prisma = new PrismaClient();
 class Station {
   // GET /api/v1/station/station
   @Get()
-  async fetchStation(@Query('fid') fid: string) {}
+  async fetchStation(@Query('fid') fid: string) {
+    // Find just one record.
+    // It is like: `select` query with `limit 1`.
+    const station = await prisma.stations.findFirst({
+      where: {
+        fid: Number(fid),
+      },
+    });
+
+    if (!station) {
+      await prisma.$disconnect();
+      // HttpCode is 404
+      throw new NotFoundException('Station not found.');
+    }
+
+    await prisma.$disconnect();
+    return station;
+  }
 
   // POST /api/v1/station/station
   @Post()
