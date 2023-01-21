@@ -1,4 +1,6 @@
 import mysql from "serverless-mysql";
+import { ExecuteQueryType } from "@/pages/api/v1/download/trips/types/download.trips.types";
+
 const db = mysql({
   config: {
     host: process.env.MYSQL_HOST,
@@ -8,3 +10,16 @@ const db = mysql({
     password: process.env.MYSQL_PASSWORD,
   },
 });
+
+export default async function executeQuery({
+  query,
+  values,
+}: ExecuteQueryType) {
+  try {
+    const results = await db.query(query, values);
+    await db.end();
+    return results;
+  } catch (error) {
+    return { error };
+  }
+}
