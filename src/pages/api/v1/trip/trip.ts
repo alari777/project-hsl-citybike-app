@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   HttpCode,
+  NotFoundException,
   Patch,
   Post,
   Query,
@@ -16,7 +17,24 @@ const prisma = new PrismaClient();
 class Trip {
   // GET /api/v1/trip/trip
   @Get()
-  async fetchTrip(@Query('id') id: string) {}
+  async fetchTrip(@Query('id') id: string) {
+    // Include section: is making operator like `join`.
+    // In order to get full related information about `departure` and `return` stations.
+    const trip = await prisma.trips.findFirst({
+      include: {
+        Stations_Trips_departureStationIdToStations: true,
+        Stations_Trips_returnStationIdToStations: true,
+      },
+    });
+
+    if (!trip) {
+      await prisma.$disconnect();
+      throw new NotFoundException('Trip not found.');
+    }
+
+    await prisma.$disconnect();
+    return trip;
+  }
 
   // POST /api/v1/trip/trip
   @Post()
