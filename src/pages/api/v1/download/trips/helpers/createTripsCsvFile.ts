@@ -1,4 +1,8 @@
 import * as Papa from "papaparse";
+import { promisify } from "util";
+import fs from "fs";
+
+const writeFileAsync = promisify(fs.writeFile);
 
 export async function createTripsCsvFile(data: any): Promise<void> {
   const results: any = Papa.parse(data);
@@ -31,4 +35,9 @@ export async function createTripsCsvFile(data: any): Promise<void> {
       return trip;
     }
   });
+
+  const pathCSV = "public/upload/csv";
+  const nameCSV = "trips";
+  const text = Papa.unparse(trips);
+  await writeFileAsync(`${pathCSV}/${nameCSV}.csv`, text);
 }
