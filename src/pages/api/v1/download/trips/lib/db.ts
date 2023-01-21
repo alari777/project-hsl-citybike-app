@@ -1,5 +1,5 @@
-import mysql from "serverless-mysql";
-import { ExecuteQueryType } from "@/pages/api/v1/download/trips/types/download.trips.types";
+import mysql from 'serverless-mysql';
+import { ExecuteQueryType } from '@/pages/api/v1/download/trips/types/download.trips.types';
 
 const db = mysql({
   config: {

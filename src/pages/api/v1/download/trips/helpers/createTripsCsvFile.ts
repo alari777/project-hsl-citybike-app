@@ -1,7 +1,7 @@
-import * as Papa from "papaparse";
-import { promisify } from "util";
-import fs from "fs";
-import { getIdsStations } from "@/pages/api/v1/download/trips/helpers/getIdsStations";
+import * as Papa from 'papaparse';
+import { promisify } from 'util';
+import fs from 'fs';
+import { getIdsStations } from '@/pages/api/v1/download/trips/helpers/getIdsStations';
 
 const writeFileAsync = promisify(fs.writeFile);
 
@@ -37,8 +37,8 @@ export async function createTripsCsvFile(data: any): Promise<void> {
     }
   });
 
-  const pathCSV = "public/upload/csv";
-  const nameCSV = "trips";
+  const pathCSV = 'public/upload/csv';
+  const nameCSV = 'trips';
   const text = Papa.unparse(trips);
   await writeFileAsync(`${pathCSV}/${nameCSV}.csv`, text);
 }

@@ -4,11 +4,11 @@ import {
   HttpCode,
   Post,
   ValidationPipe,
-} from "next-api-decorators";
-import { downloadTripsCsv } from "@/pages/api/v1/download/trips/helpers/downloadTripsCsv";
-import { loadDataInfileToDB } from "@/pages/api/v1/download/trips/helpers/loadDataInfileToDB";
-import { createTripsCsvFile } from "@/pages/api/v1/download/trips/helpers/createTripsCsvFile";
-import { CreateTripsDTO } from "@/pages/api/v1/download/trips/dto/createTrips.dto";
+} from 'next-api-decorators';
+import { downloadTripsCsv } from '@/pages/api/v1/download/trips/helpers/downloadTripsCsv';
+import { loadDataInfileToDB } from '@/pages/api/v1/download/trips/helpers/loadDataInfileToDB';
+import { createTripsCsvFile } from '@/pages/api/v1/download/trips/helpers/createTripsCsvFile';
+import { CreateTripsDTO } from '@/pages/api/v1/download/trips/dto/createTrips.dto';
 
 class DownloadTrips {
   @Post()
