@@ -2,6 +2,7 @@ import {
   IsDecimal,
   IsNotEmpty,
   IsNumber,
+  IsOptional,
   IsString,
   Min,
 } from 'class-validator';
@@ -32,17 +33,17 @@ export class CreateStationDTO {
   @IsString()
   public addressSwe!: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  public cityFi!: string;
+  public cityFi?: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  public citySwe!: string;
+  public citySwe?: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  public operator!: string;
+  public operator?: string;
 
   @IsNotEmpty()
   @IsNumber()
