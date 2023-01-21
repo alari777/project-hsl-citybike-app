@@ -1,8 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-
-type StationId = {
-  id: number;
-};
+import { StationId } from "@/pages/api/v1/download/trips/types/download.trips.types";
 
 export async function getIdsStations(): Promise<number[]> {
   const prisma = new PrismaClient();
