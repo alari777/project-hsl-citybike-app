@@ -9,6 +9,9 @@ import {
   Query,
   ValidationPipe,
 } from 'next-api-decorators';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 class Station {
   // GET /api/v1/station/station
