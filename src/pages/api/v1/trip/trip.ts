@@ -1,6 +1,7 @@
 import {
   Body,
   createHandler,
+  Delete,
   Get,
   HttpCode,
   Post,
@@ -17,6 +18,11 @@ class Trip {
   @Post()
   @HttpCode(201)
   async createTrip(@Body(ValidationPipe) body: any) {}
+
+  // DELETE /api/v1/trip/trip
+  @Delete()
+  @HttpCode(201)
+  async deleteTrip(@Body(ValidationPipe) body: any) {}
 }
 
 export default createHandler(Trip);
