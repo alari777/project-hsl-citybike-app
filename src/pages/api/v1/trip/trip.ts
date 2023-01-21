@@ -13,6 +13,7 @@ import {
 import { PrismaClient } from '@prisma/client';
 import { CreateTripDTO } from '@/pages/api/v1/trip/dto/createTrip.dto';
 import { DeleteTripDTO } from '@/pages/api/v1/trip/dto/deleteTrip.dto';
+import { UpdateTripDTO } from '@/pages/api/v1/trip/dto/updateTrip.dto';
 
 const prisma = new PrismaClient();
 
@@ -70,7 +71,21 @@ class Trip {
   // PATCH /api/v1/trip/trip
   @Patch()
   @HttpCode(201)
-  async updateTrip(@Body(ValidationPipe) body: any) {}
+  async updateTrip(@Body(ValidationPipe) body: UpdateTripDTO) {
+    const { id } = body;
+    const result = await prisma.trips.update({
+      where: {
+        id,
+      },
+      data: {
+        ...body,
+      },
+    });
+
+    await prisma.$disconnect();
+
+    return result;
+  }
 }
 
 export default createHandler(Trip);
