@@ -1,18 +1,18 @@
-import * as Papa from "papaparse";
-import { InternalServerErrorException } from "next-api-decorators";
+import * as Papa from 'papaparse';
+import { InternalServerErrorException } from 'next-api-decorators';
 import {
   BodyType,
   DownloadCsvType,
-} from "@/pages/api/v1/download/stations/types/download.stations.types";
+} from '@/pages/api/v1/download/stations/types/download.stations.types';
 
 // This function downloads remote CSV file
 export async function downloadCsv(body: BodyType): Promise<DownloadCsvType> {
   try {
     const { url } = body;
     const response = await fetch(url, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "content-type": "text/csv;charset=UTF-8",
+        'content-type': 'text/csv;charset=UTF-8',
       },
     });
     if (response.status === 200) {
@@ -26,6 +26,6 @@ export async function downloadCsv(body: BodyType): Promise<DownloadCsvType> {
     }
   } catch (err: any) {
     console.error(err.message);
-    throw new InternalServerErrorException("Something goes wrong ..");
+    throw new InternalServerErrorException('Something goes wrong ..');
   }
 }

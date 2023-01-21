@@ -1,7 +1,7 @@
 import {
   DownloadCsvType,
   StationType,
-} from "@/pages/api/v1/download/stations/types/download.stations.types";
+} from '@/pages/api/v1/download/stations/types/download.stations.types';
 
 export function prepareData(stations: DownloadCsvType): StationType[] {
   const prepareArr: StationType[] = [];

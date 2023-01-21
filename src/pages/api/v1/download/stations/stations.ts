@@ -1,15 +1,15 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 import {
   Body,
   createHandler,
   HttpCode,
   Post,
   ValidationPipe,
-} from "next-api-decorators";
-import { CreateStationsDTO } from "@/pages/api/v1/download/stations/dto/createStations.dto";
-import { downloadCsv } from "@/pages/api/v1/download/stations/helpers/dowloadCsv";
-import { prepareData } from "@/pages/api/v1/download/stations/helpers/prepareData";
-import { DownloadCsvType } from "@/pages/api/v1/download/stations/types/download.stations.types";
+} from 'next-api-decorators';
+import { CreateStationsDTO } from '@/pages/api/v1/download/stations/dto/createStations.dto';
+import { downloadCsv } from '@/pages/api/v1/download/stations/helpers/dowloadCsv';
+import { prepareData } from '@/pages/api/v1/download/stations/helpers/prepareData';
+import { DownloadCsvType } from '@/pages/api/v1/download/stations/types/download.stations.types';
 const prisma = new PrismaClient();
 
 // This class is for download csv file by remote URL
