@@ -1,5 +1,9 @@
-import { createHandler } from 'next-api-decorators';
+import { createHandler, Get, Query } from 'next-api-decorators';
 
-class Station {}
+class Station {
+  // GET /api/v1/station/station
+  @Get()
+  async fetchStation(@Query('fid') fid: string) {}
+}
 
 export default createHandler(Station);
