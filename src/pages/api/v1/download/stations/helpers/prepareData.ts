@@ -1,6 +1,9 @@
-import { StationType } from "@/pages/api/v1/download/stations/types/download.stations.types";
+import {
+  DownloadCsvType,
+  StationType,
+} from "@/pages/api/v1/download/stations/types/download.stations.types";
 
-export function prepareData(stations: { data: string[][] }): StationType[] {
+export function prepareData(stations: DownloadCsvType): StationType[] {
   const prepareArr: StationType[] = [];
   stations.data.map((station: string[]) => {
     if (!isNaN(Number(station[1]))) {
