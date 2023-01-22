@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { GetServerSidePropsContext } from 'next';
 import { getStations } from '@/pages/api/getStations';
+import Manage from '@/components/Manage/Manage';
 
 type StationType = {
   id: number;
@@ -14,7 +15,12 @@ interface ManagePageProps {
 }
 
 const ManagePage: FC<ManagePageProps> = ({ stations }) => {
-  return <h1>Manage page: add Stations and Trips</h1>;
+  return (
+    <>
+      <h1>Manage page: add Stations and Trips</h1>
+      <Manage />
+    </>
+  );
 };
 
 export default ManagePage;
