@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, FormEvent } from 'react';
 import Report from '@/components/Manage/Report/Report';
 
 const AddStationsRemotely: FC = () => {
