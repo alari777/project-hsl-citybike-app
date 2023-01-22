@@ -33,7 +33,11 @@ const AddStationsRemotely: FC = () => {
           onChange={(e) => setUrlStation(e.target.value)}
         />
       </div>
-      <button onClick={importStations} className='btn btn-primary mt-3'>
+      <button
+        type='button'
+        onClick={importStations}
+        className='btn btn-primary mt-3'
+      >
         {classSpinner && (
           <span
             className='spinner-border spinner-border-sm'
