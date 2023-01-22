@@ -65,7 +65,7 @@ const AddStationsRemotely: FC = () => {
         )}
         Import stations
       </button>
-      <Report reports={report} />
+      <Report reports={report} typeReport='AddStationsRemotely' />
     </>
   );
 };
