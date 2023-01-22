@@ -1,0 +1,22 @@
+html {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  font-size: 1.25rem;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  padding: 1.25rem;
+}
+
+#__next {
+  min-height: 100vh;
+  display: grid;
+  grid-auto-rows: auto 1fr auto;
+}
