@@ -41,31 +41,34 @@ const AddStationsRemotely: FC = () => {
 
   return (
     <>
-      <div className='form-group'>
-        <label htmlFor='stationsRemotelyUrl'>URL for fetching stations</label>
-        <input
-          type='url'
-          className='form-control'
-          id='stationsRemotelyUrl'
-          placeholder='Enter URL'
-          onChange={(e) => setUrlStation(e.target.value)}
-        />
-      </div>
-      <button
-        type='button'
-        onClick={importStations}
-        className='btn btn-primary mt-3'
-      >
-        {classSpinner && (
-          <span
-            className='spinner-border spinner-border-sm'
-            role='status'
-            aria-hidden='true'
-          ></span>
-        )}
-        Import stations
-      </button>
-      <Report reports={report} typeReport='AddStationsRemotely' />
+      <form onSubmit={importStations}>
+        <div className='form-group'>
+          <label htmlFor='stationsRemotelyUrl'>URL for fetching stations</label>
+          <input
+            type='url'
+            className='form-control'
+            id='stationsRemotelyUrl'
+            placeholder='Enter URL'
+            required={true}
+            onChange={(e) => setUrlStation(e.target.value)}
+          />
+        </div>
+        <button
+          type='submit'
+          /*onClick={importStations}*/
+          className='btn btn-primary mt-3'
+        >
+          {classSpinner && (
+            <span
+              className='spinner-border spinner-border-sm'
+              role='status'
+              aria-hidden='true'
+            ></span>
+          )}
+          Import stations
+        </button>
+        <Report reports={report} typeReport='AddStationsRemotely' />
+      </form>
     </>
   );
 };
