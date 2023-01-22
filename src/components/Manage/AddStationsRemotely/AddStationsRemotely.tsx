@@ -2,9 +2,11 @@ import { FC, useState } from 'react';
 
 const AddStationsRemotely: FC = () => {
   const [urlStation, setUrlStation] = useState<string>('');
+  const [classSpinner, setClassSpinner] = useState<boolean>(false);
 
   // Add remotely stations in DB
   const importStations = async (): Promise<void> => {
+    setClassSpinner(true);
     try {
       const response = await fetch('/api/v1/download/stations/stations', {
         method: 'POST',
@@ -16,6 +18,7 @@ const AddStationsRemotely: FC = () => {
         await response.json();
       }
     } catch (err) {}
+    setClassSpinner(false);
   };
 
   return (
@@ -31,6 +34,13 @@ const AddStationsRemotely: FC = () => {
         />
       </div>
       <button onClick={importStations} className='btn btn-primary mt-3'>
+        {classSpinner && (
+          <span
+            className='spinner-border spinner-border-sm'
+            role='status'
+            aria-hidden='true'
+          ></span>
+        )}
         Import stations
       </button>
     </>
