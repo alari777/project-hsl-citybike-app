@@ -23,6 +23,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   // Getting station names and IDs
   const stations = await getStations();
   return {
-    props: { stations: stations }, // pass these data to props
+    props: { stations: JSON.parse(stations) }, // will be passed to the page component as props
   };
 }
