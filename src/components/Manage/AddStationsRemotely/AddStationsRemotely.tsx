@@ -29,7 +29,9 @@ const AddStationsRemotely: FC = () => {
           placeholder='Enter URL'
         />
       </div>
-      <button className='btn btn-primary mt-3'>Import stations</button>
+      <button onClick={importStations} className='btn btn-primary mt-3'>
+        Import stations
+      </button>
     </>
   );
 };
