@@ -27,6 +27,7 @@ const AddStationsRemotely: FC = () => {
           className='form-control'
           id='stationsRemotelyUrl'
           placeholder='Enter URL'
+          onChange={(e) => setUrlStation(e.target.value)}
         />
       </div>
       <button onClick={importStations} className='btn btn-primary mt-3'>
