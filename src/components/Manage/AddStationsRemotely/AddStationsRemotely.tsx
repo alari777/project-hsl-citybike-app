@@ -1,6 +1,7 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 const AddStationsRemotely: FC = () => {
+  const [urlStation, setUrlStation] = useState<string>('');
   return (
     <>
       <div className='form-group'>
