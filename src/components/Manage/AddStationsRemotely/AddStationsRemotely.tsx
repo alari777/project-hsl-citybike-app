@@ -10,6 +10,10 @@ const AddStationsRemotely: FC = () => {
     try {
       const response = await fetch('/api/v1/download/stations/stations', {
         method: 'POST',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           url: urlStation,
         }),
