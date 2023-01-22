@@ -4,7 +4,6 @@ import AddStationsRemotely from '@/components/Manage/AddStationsRemotely/AddStat
 const Manage: FC = () => {
   return (
     <>
-      <h1>Manage component</h1>
       <AddStationsRemotely />
     </>
   );
