@@ -2,7 +2,18 @@ import { FC } from 'react';
 import { GetServerSidePropsContext } from 'next';
 import { getStations } from '@/pages/api/getStations';
 
-const ManagePage: FC = () => {
+type StationType = {
+  id: number;
+  nameFi: string;
+  nameSwe: string;
+  nameEn: string;
+};
+
+interface ManagePageProps {
+  stations: StationType[];
+}
+
+const ManagePage: FC<ManagePageProps> = ({ stations }) => {
   return <h1>Manage page: add Stations and Trips</h1>;
 };
 
