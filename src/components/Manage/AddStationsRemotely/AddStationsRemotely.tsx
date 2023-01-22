@@ -7,7 +7,10 @@ const AddStationsRemotely: FC = () => {
   const [report, setReport] = useState<string[]>([]);
 
   // Add remotely stations in DB
-  const importStations = async (): Promise<void> => {
+  const importStations = async (
+    event: FormEvent<HTMLFormElement>
+  ): Promise<void> => {
+    event.preventDefault();
     setClassSpinner(true);
     setReport([]);
     setReport((report) => [
