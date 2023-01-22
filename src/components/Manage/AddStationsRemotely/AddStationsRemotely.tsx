@@ -1,12 +1,19 @@
 import { FC, useState } from 'react';
+import Report from '@/components/Manage/Report/Report';
 
 const AddStationsRemotely: FC = () => {
   const [urlStation, setUrlStation] = useState<string>('');
   const [classSpinner, setClassSpinner] = useState<boolean>(false);
+  const [report, setReport] = useState<string[]>([]);
 
   // Add remotely stations in DB
   const importStations = async (): Promise<void> => {
     setClassSpinner(true);
+    setReport([]);
+    setReport((report) => [
+      ...report,
+      'Wait a little bit. Data is fetching remotely ...',
+    ]);
     try {
       const response = await fetch('/api/v1/download/stations/stations', {
         method: 'POST',
@@ -19,9 +26,16 @@ const AddStationsRemotely: FC = () => {
         }),
       });
       if (response.status === 201) {
+        setReport((report) => [...report, 'Adding data in DB.']);
         await response.json();
+        setReport((report) => [...report, 'Data was added successfully.']);
       }
-    } catch (err) {}
+    } catch (err) {
+      setReport((report) => [
+        ...report,
+        'Data was not added. Something went wrong. Please try again later.',
+      ]);
+    }
     setClassSpinner(false);
   };
 
@@ -51,6 +65,7 @@ const AddStationsRemotely: FC = () => {
         )}
         Import stations
       </button>
+      <Report reports={report} />
     </>
   );
 };
