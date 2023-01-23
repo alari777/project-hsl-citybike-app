@@ -57,6 +57,8 @@ const AddStationsManually: FC = () => {
       });
       if (response.status === 201) {
         setReport((report) => [...report, 'Station was added successfully.']);
+      } else {
+        setReport((report) => [...report, 'Station was not added.']);
       }
     } catch (err) {
       setReport((report) => [
@@ -64,13 +66,13 @@ const AddStationsManually: FC = () => {
         'Station was not added. Something went wrong. Please try again later.',
       ]);
     }
-    setClassSpinner(true);
+    setClassSpinner(false);
   };
 
   return (
     <>
       <form onSubmit={addStation}>
-        <div className='form-group'>
+        <div className='form-group row'>
           <label htmlFor='idStation'>ID station</label>
           <input
             type='number'
