@@ -44,7 +44,7 @@ const AddTripsRemotely: FC = () => {
 
   return (
     <div>
-      <form>
+      <form onSubmit={importTrips}>
         <div className='form-group'>
           <label htmlFor='tripsRemotelyUrl'>URL for fetching trips *</label>
           <input
