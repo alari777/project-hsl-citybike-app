@@ -134,6 +134,12 @@ const AddTripsManually: FC<ManageComponentProps> = ({ stations }) => {
               placeholder='Enter covered distance'
               required={true}
               min={10}
+              onChange={(e) =>
+                setOneTrip({
+                  ...oneTrip,
+                  coveredDistance: Number(e.target.value),
+                })
+              }
             />
           </div>
         </div>
