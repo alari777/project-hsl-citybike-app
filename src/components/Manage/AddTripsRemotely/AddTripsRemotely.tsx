@@ -53,6 +53,7 @@ const AddTripsRemotely: FC = () => {
             id='tripsRemotelyUrl'
             placeholder='Enter URL'
             required={true}
+            onChange={(e) => setUrlTrip(e.target.value)}
           />
         </div>
         <button
