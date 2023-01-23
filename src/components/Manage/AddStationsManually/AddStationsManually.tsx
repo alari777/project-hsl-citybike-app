@@ -73,12 +73,13 @@ const AddStationsManually: FC = () => {
     <>
       <form onSubmit={addStation}>
         <div className='form-group row'>
-          <label htmlFor='idStation'>ID station</label>
+          <label htmlFor='idStation'>ID station *</label>
           <input
             type='number'
             className='form-control'
             id='idStation'
             placeholder='Enter ID station'
+            required={true}
             onChange={(e) =>
               setOneStation({
                 ...oneStation,
@@ -87,12 +88,13 @@ const AddStationsManually: FC = () => {
             }
           />
 
-          <label htmlFor='nameFi'>Station name FI</label>
+          <label htmlFor='nameFi'>Station name FI *</label>
           <input
             type='text'
             className='form-control'
             id='nameFi'
             placeholder='Enter station name FI'
+            required={true}
             onChange={(e) =>
               setOneStation({
                 ...oneStation,
@@ -100,12 +102,13 @@ const AddStationsManually: FC = () => {
               })
             }
           />
-          <label htmlFor='nameSwe'>Station name SWE</label>
+          <label htmlFor='nameSwe'>Station name SWE *</label>
           <input
             type='text'
             className='form-control'
             id='nameSwe'
             placeholder='Enter station name SWE'
+            required={true}
             onChange={(e) =>
               setOneStation({
                 ...oneStation,
@@ -113,12 +116,13 @@ const AddStationsManually: FC = () => {
               })
             }
           />
-          <label htmlFor='nameEn'>Station name EN</label>
+          <label htmlFor='nameEn'>Station name EN *</label>
           <input
             type='text'
             className='form-control'
             id='nameEn'
             placeholder='Enter station name EN'
+            required={true}
             onChange={(e) =>
               setOneStation({
                 ...oneStation,
@@ -126,12 +130,13 @@ const AddStationsManually: FC = () => {
               })
             }
           />
-          <label htmlFor='addressFi'>Station address FI</label>
+          <label htmlFor='addressFi'>Station address FI *</label>
           <input
             type='text'
             className='form-control'
             id='addressFi'
             placeholder='Enter address FI'
+            required={true}
             onChange={(e) =>
               setOneStation({
                 ...oneStation,
@@ -139,12 +144,13 @@ const AddStationsManually: FC = () => {
               })
             }
           />
-          <label htmlFor='addressSwe'>Station address SWE</label>
+          <label htmlFor='addressSwe'>Station address SWE *</label>
           <input
             type='text'
             className='form-control'
             id='addressSwe'
             placeholder='Enter address SWE'
+            required={true}
             onChange={(e) =>
               setOneStation({
                 ...oneStation,
@@ -191,12 +197,13 @@ const AddStationsManually: FC = () => {
               })
             }
           />
-          <label htmlFor='capacities'>Enter capacities</label>
+          <label htmlFor='capacities'>Enter capacities *</label>
           <input
             type='number'
             className='form-control'
             id='capacities'
             placeholder='Enter capacities'
+            required={true}
             onChange={(e) =>
               setOneStation({
                 ...oneStation,
@@ -204,12 +211,13 @@ const AddStationsManually: FC = () => {
               })
             }
           />
-          <label htmlFor='coordinateX'>Enter coordinateX</label>
+          <label htmlFor='coordinateX'>Enter coordinateX *</label>
           <input
             type='number'
             className='form-control'
             id='coordinateX'
             placeholder='Enter coordinateX'
+            required={true}
             step={0.0000001}
             max={99}
             onChange={(e) =>
@@ -219,12 +227,13 @@ const AddStationsManually: FC = () => {
               })
             }
           />
-          <label htmlFor='coordinateY'>Enter coordinateY</label>
+          <label htmlFor='coordinateY'>Enter coordinateY *</label>
           <input
             type='number'
             className='form-control'
             id='coordinateY'
             placeholder='Enter coordinateY'
+            required={true}
             step={0.0000001}
             max={99}
             onChange={(e) =>
