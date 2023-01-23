@@ -23,7 +23,7 @@ const AddTripsManually: FC = () => {
   });
   return (
     <>
-      <h1>Add Trips Manually</h1>
+      <form></form>
     </>
   );
 };
