@@ -1,6 +1,22 @@
 import Head from 'next/head';
 import { FC } from 'react';
 
+type TripType = {
+  id: number;
+  departureDate: string;
+  coveredDistance: string;
+  duration: string;
+  returnDate: string;
+  departureStationId?: number;
+  returnStationId?: number;
+  departureStation: { nameFi: string };
+  Stations_Trips_returnStationIdToStations: { nameFi: string };
+};
+
+interface ManagePageProps {
+  trips: TripType[];
+}
+
 const HomePage: FC = () => {
   return (
     <>
