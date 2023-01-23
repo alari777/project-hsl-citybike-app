@@ -210,6 +210,8 @@ const AddStationsManually: FC = () => {
             className='form-control'
             id='coordinateX'
             placeholder='Enter coordinateX'
+            step={0.0000001}
+            max={99}
             onChange={(e) =>
               setOneStation({
                 ...oneStation,
@@ -223,6 +225,8 @@ const AddStationsManually: FC = () => {
             className='form-control'
             id='coordinateY'
             placeholder='Enter coordinateY'
+            step={0.0000001}
+            max={99}
             onChange={(e) =>
               setOneStation({
                 ...oneStation,
