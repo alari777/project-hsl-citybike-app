@@ -29,9 +29,24 @@ const AddTripsRemotely: FC = () => {
         }),
       });
       if (response.status === 201) {
-        setReport((report) => [...report, 'Adding trips in DB.']);
+        setReport((report) => [...report, 'Trips were fetched successfully.']);
         await response.json();
-        setReport((report) => [...report, 'Trips were added successfully.']);
+        setReport((report) => [
+          ...report,
+          'Wait a little bit. Trips are adding in database ...',
+        ]);
+        const result = await fetch('/api/v1/download/trips/trips', {
+          method: 'GET',
+        });
+        const json = await result.json();
+        console.log(json);
+
+        setReport((report) => [
+          ...report,
+          `Trips were added successfully. Total trips amount is: ${json.loadDataInfileToDB.affectedRows}`,
+        ]);
+      } else {
+        setReport((report) => [...report, 'Trips were not fetched.']);
       }
     } catch (err) {
       setReport((report) => [
