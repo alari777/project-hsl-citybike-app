@@ -76,6 +76,17 @@ const AddTripsManually: FC = () => {
               min={10}
             />
           </div>
+          <div className='col-md-9'>
+            <label htmlFor='coveredDistance'>Covered distance *</label>
+            <input
+              type='number'
+              className='form-control'
+              id='coveredDistance'
+              placeholder='Enter covered distance'
+              required={true}
+              min={10}
+            />
+          </div>
         </div>
         <button type='submit' className='btn btn-primary mt-3'>
           {classSpinner && (
