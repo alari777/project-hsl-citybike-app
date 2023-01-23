@@ -27,6 +27,13 @@ const AddStationsManually: FC = () => {
             id='nameSwe'
             placeholder='Enter station name SWE'
           />
+          <label htmlFor='nameEn'>Station name EN</label>
+          <input
+            type='text'
+            className='form-control'
+            id='nameEn'
+            placeholder='Enter station name EN'
+          />
         </div>
         <button type='submit' className='btn btn-primary mt-3'>
           Add station
