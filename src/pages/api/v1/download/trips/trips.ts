@@ -10,7 +10,7 @@ import { loadDataInfileToDB } from '@/pages/api/v1/download/trips/helpers/loadDa
 import { createTripsCsvFile } from '@/pages/api/v1/download/trips/helpers/createTripsCsvFile';
 import { CreateTripsDTO } from '@/pages/api/v1/download/trips/dto/createTrips.dto';
 
-class DownloadTrips {
+class FetchTrips {
   @Post()
   @HttpCode(201)
   async createTrips(@Body(ValidationPipe) body: CreateTripsDTO) {
@@ -25,4 +25,4 @@ class DownloadTrips {
   }
 }
 
-export default createHandler(DownloadTrips);
+export default createHandler(FetchTrips);
