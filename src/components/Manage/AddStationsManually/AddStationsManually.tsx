@@ -1,4 +1,5 @@
 import { FC, FormEvent, useState } from 'react';
+import Report from '@/components/Manage/Report/Report';
 
 type OneStationType = {
   id: number;
@@ -228,6 +229,7 @@ const AddStationsManually: FC = () => {
           )}
           Add station
         </button>
+        <Report reports={report} typeReport='AddStationsManually' />
       </form>
     </>
   );
