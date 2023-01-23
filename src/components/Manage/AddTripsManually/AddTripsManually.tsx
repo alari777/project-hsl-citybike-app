@@ -94,6 +94,12 @@ const AddTripsManually: FC<ManageComponentProps> = ({ stations }) => {
               className='returnStationId'
               id='returnStationId'
               value={oneTrip.returnStationId}
+              onChange={(e) =>
+                setOneTrip({
+                  ...oneTrip,
+                  returnStationId: Number(e.target.value),
+                })
+              }
             >
               {stations.map((station: any) => (
                 <option key={station.id} value={station.id}>
