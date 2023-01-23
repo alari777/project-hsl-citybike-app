@@ -117,6 +117,12 @@ const AddTripsManually: FC<ManageComponentProps> = ({ stations }) => {
               placeholder='Enter duration'
               required={true}
               min={10}
+              onChange={(e) =>
+                setOneTrip({
+                  ...oneTrip,
+                  duration: Number(e.target.value),
+                })
+              }
             />
           </div>
           <div className='col-md-9'>
