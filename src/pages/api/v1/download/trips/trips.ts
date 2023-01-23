@@ -1,6 +1,7 @@
 import {
   Body,
   createHandler,
+  Get,
   HttpCode,
   Post,
   ValidationPipe,
@@ -13,12 +14,20 @@ import { CreateTripsDTO } from '@/pages/api/v1/download/trips/dto/createTrips.dt
 class FetchTrips {
   @Post()
   @HttpCode(201)
-  async createTrips(@Body(ValidationPipe) body: CreateTripsDTO) {
+  async fetchTripsRemotely(@Body(ValidationPipe) body: CreateTripsDTO) {
     const { url } = body;
     const csvText = await downloadTripsCsv(url);
     await createTripsCsvFile(csvText);
-    const result = await loadDataInfileToDB();
 
+    return {
+      isDone: true,
+    };
+  }
+
+  @Get()
+  async createTripsFromCSV() {
+    const result = await loadDataInfileToDB();
+    console.log(result);
     return {
       loadDataInfileToDB: result,
     };
