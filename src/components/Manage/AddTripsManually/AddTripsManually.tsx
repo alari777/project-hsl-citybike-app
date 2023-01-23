@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, FormEvent, useState } from 'react';
 import Report from '@/components/Manage/Report/Report';
 
 type OneTripType = {
@@ -32,6 +32,35 @@ const AddTripsManually: FC<ManageComponentProps> = ({ stations }) => {
     coveredDistance: 0,
     duration: 0,
   });
+
+  const addTrip = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
+    event.preventDefault();
+    setClassSpinner(true);
+    setReport([]);
+    setReport((report) => [...report, 'Wait a little bit. Trip is adding ...']);
+    try {
+      const response = await fetch('/api/v1/trip/trip', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(oneTrip),
+      });
+      if (response.status === 201) {
+        setReport((report) => [...report, 'Trip was added successfully.']);
+      } else {
+        setReport((report) => [...report, 'Trip was not added.']);
+      }
+    } catch (err) {
+      setReport((report) => [
+        ...report,
+        'Trip was not added. Something went wrong. Please try again later.',
+      ]);
+    }
+    setClassSpinner(false);
+  };
+
   return (
     <>
       <form>
