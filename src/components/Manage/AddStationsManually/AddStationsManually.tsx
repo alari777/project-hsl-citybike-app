@@ -41,6 +41,11 @@ const AddStationsManually: FC = () => {
   ): Promise<void> => {
     event.preventDefault();
     setClassSpinner(true);
+    setReport([]);
+    setReport((report) => [
+      ...report,
+      'Wait a little bit. Station is adding ...',
+    ]);
     try {
       const response = await fetch('/api/v1/station/station', {
         method: 'POST',
@@ -51,9 +56,14 @@ const AddStationsManually: FC = () => {
         body: JSON.stringify(oneStation),
       });
       if (response.status === 201) {
-        console.log('Add Station:', response);
+        setReport((report) => [...report, 'Station was added successfully.']);
       }
-    } catch (err) {}
+    } catch (err) {
+      setReport((report) => [
+        ...report,
+        'Station was not added. Something went wrong. Please try again later.',
+      ]);
+    }
     setClassSpinner(true);
   };
 
