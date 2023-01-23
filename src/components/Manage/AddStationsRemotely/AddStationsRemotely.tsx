@@ -1,6 +1,5 @@
 import { FC, useState, FormEvent } from 'react';
 import Report from '@/components/Manage/Report/Report';
-import style from '@/components/Manage/AddStationsRemotely/AddStationsRemotely.module.scss';
 
 const AddStationsRemotely: FC = () => {
   const [urlStation, setUrlStation] = useState<string>('');
@@ -30,9 +29,9 @@ const AddStationsRemotely: FC = () => {
         }),
       });
       if (response.status === 201) {
-        setReport((report) => [...report, 'Adding data in DB.']);
+        setReport((report) => [...report, 'Adding stations in DB.']);
         await response.json();
-        setReport((report) => [...report, 'Data was added successfully.']);
+        setReport((report) => [...report, 'Stations were added successfully.']);
       }
     } catch (err) {
       setReport((report) => [
@@ -44,7 +43,7 @@ const AddStationsRemotely: FC = () => {
   };
 
   return (
-    <div className={style.stations}>
+    <div>
       <form onSubmit={importStations}>
         <div className='form-group'>
           <label htmlFor='stationsRemotelyUrl'>URL for fetching stations</label>
