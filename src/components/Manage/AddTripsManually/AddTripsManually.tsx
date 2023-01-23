@@ -55,6 +55,16 @@ const AddTripsManually: FC = () => {
               <option>-</option>
             </select>
           </div>
+          <div className='col-md-9'>
+            <label htmlFor='returnStationId'>Return station *</label>
+            <select
+              className='returnStationId'
+              id='returnStationId'
+              value={oneTrip.returnStationId}
+            >
+              <option>-</option>
+            </select>
+          </div>
         </div>
         <button type='submit' className='btn btn-primary mt-3'>
           {classSpinner && (
