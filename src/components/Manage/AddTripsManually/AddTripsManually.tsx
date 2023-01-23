@@ -11,6 +11,7 @@ type OneTripType = {
 };
 
 const AddTripsManually: FC = () => {
+  const [classSpinner, setClassSpinner] = useState<boolean>(false);
   const [oneTrip, setOneTrip] = useState<OneTripType>({
     departureDate: undefined,
     returnDate: undefined,
