@@ -10,7 +10,18 @@ type OneTripType = {
   duration: number;
 };
 
-const AddTripsManually: FC = () => {
+type StationType = {
+  id: number;
+  nameFi: string;
+  nameSwe: string;
+  nameEn: string;
+};
+
+interface ManageComponentProps {
+  stations: StationType[];
+}
+
+const AddTripsManually: FC<ManageComponentProps> = ({ stations }) => {
   const [classSpinner, setClassSpinner] = useState<boolean>(false);
   const [report, setReport] = useState<string[]>([]);
   const [oneTrip, setOneTrip] = useState<OneTripType>({
@@ -52,7 +63,11 @@ const AddTripsManually: FC = () => {
               id='departureStationId'
               value={oneTrip.departureStationId}
             >
-              <option>-</option>
+              {stations.map((station: any) => (
+                <option key={station.id} value={station.id}>
+                  {station.nameFi}
+                </option>
+              ))}
             </select>
           </div>
           <div className='col-md-9'>
@@ -62,7 +77,11 @@ const AddTripsManually: FC = () => {
               id='returnStationId'
               value={oneTrip.returnStationId}
             >
-              <option>-</option>
+              {stations.map((station: any) => (
+                <option key={station.id} value={station.id}>
+                  {station.nameFi}
+                </option>
+              ))}
             </select>
           </div>
           <div className='col-md-9'>
