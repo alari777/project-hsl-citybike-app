@@ -38,6 +38,7 @@ const AddStationsManually: FC = () => {
     event: FormEvent<HTMLFormElement>
   ): Promise<void> => {
     event.preventDefault();
+    setClassSpinner(true);
     try {
       const response = await fetch('/api/v1/station/station', {
         method: 'POST',
@@ -51,6 +52,7 @@ const AddStationsManually: FC = () => {
         console.log('Add Station:', response);
       }
     } catch (err) {}
+    setClassSpinner(true);
   };
 
   return (
