@@ -23,7 +23,18 @@ const AddTripsManually: FC = () => {
   });
   return (
     <>
-      <form></form>
+      <form>
+        <button type='submit' className='btn btn-primary mt-3'>
+          {classSpinner && (
+            <span
+              className='spinner-border spinner-border-sm'
+              role='status'
+              aria-hidden='true'
+            ></span>
+          )}
+          Add trip
+        </button>
+      </form>
     </>
   );
 };
