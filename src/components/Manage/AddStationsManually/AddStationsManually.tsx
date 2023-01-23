@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, FormEvent, useState } from 'react';
 
 type OneStationType = {
   id: number;
@@ -30,6 +30,28 @@ const AddStationsManually: FC = () => {
     coordinateX: 0,
     coordinateY: 0,
   });
+
+  // Add station in DB manually.
+  // Information with station is storing in `oneStation`
+  const addStation = async (
+    event: FormEvent<HTMLFormElement>
+  ): Promise<void> => {
+    event.preventDefault();
+    try {
+      const response = await fetch('/api/v1/station/station', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(oneStation),
+      });
+      if (response.status === 201) {
+        console.log('Add Station:', response);
+      }
+    } catch (err) {}
+  };
+
   return (
     <>
       <form>
