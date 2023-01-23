@@ -63,7 +63,7 @@ const AddTripsManually: FC<ManageComponentProps> = ({ stations }) => {
 
   return (
     <>
-      <form>
+      <form onSubmit={addTrip}>
         <div className='form-row'>
           <div className='col-md-9'>
             <label htmlFor='departureDate'>Departure date *</label>
