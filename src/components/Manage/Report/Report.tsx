@@ -8,7 +8,7 @@ interface ReportProps {
 const Report: FC<ReportProps> = ({ reports, typeReport }) => {
   return (
     <div className='mt-3'>
-      <label htmlFor={typeReport}>Report:</label>
+      {reports.length !== 0 && <label htmlFor={typeReport}>Report:</label>}
       <ul id={typeReport} key={typeReport}>
         {reports &&
           reports.map((report: string, index: number) => (
