@@ -35,6 +35,16 @@ const AddTripsManually: FC = () => {
               required={true}
             />
           </div>
+          <div className='col-md-9'>
+            <label htmlFor='returnDate'>Return date *</label>
+            <input
+              type='datetime-local'
+              step='1'
+              id='returnDate'
+              className='form-control'
+              required={true}
+            />
+          </div>
         </div>
         <button type='submit' className='btn btn-primary mt-3'>
           {classSpinner && (
