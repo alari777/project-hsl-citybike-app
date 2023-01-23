@@ -12,6 +12,7 @@ import { createTripsCsvFile } from '@/pages/api/v1/download/trips/helpers/create
 import { CreateTripsDTO } from '@/pages/api/v1/download/trips/dto/createTrips.dto';
 
 class FetchTrips {
+  // Fetch trips and store these in CSV file.
   @Post()
   @HttpCode(201)
   async fetchTripsRemotely(@Body(ValidationPipe) body: CreateTripsDTO) {
@@ -24,6 +25,7 @@ class FetchTrips {
     };
   }
 
+  // Save these trips in DB.
   @Get()
   async createTripsFromCSV() {
     const result = await loadDataInfileToDB();
