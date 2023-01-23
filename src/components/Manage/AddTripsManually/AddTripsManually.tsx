@@ -24,6 +24,18 @@ const AddTripsManually: FC = () => {
   return (
     <>
       <form>
+        <div className='form-row'>
+          <div className='col-md-9'>
+            <label htmlFor='departureDate'>Departure date *</label>
+            <input
+              type='datetime-local'
+              step='1'
+              id='departureDate'
+              className='form-control'
+              required={true}
+            />
+          </div>
+        </div>
         <button type='submit' className='btn btn-primary mt-3'>
           {classSpinner && (
             <span
