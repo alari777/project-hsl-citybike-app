@@ -215,7 +215,7 @@ const AddStationsManually: FC = () => {
             onChange={(e) =>
               setOneStation({
                 ...oneStation,
-                coordinateX: Number(e.target.value),
+                coordinateX: parseFloat(e.target.value),
               })
             }
           />
@@ -230,7 +230,7 @@ const AddStationsManually: FC = () => {
             onChange={(e) =>
               setOneStation({
                 ...oneStation,
-                coordinateY: Number(e.target.value),
+                coordinateY: parseFloat(e.target.value),
               })
             }
           />
