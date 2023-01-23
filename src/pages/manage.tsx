@@ -18,7 +18,7 @@ const ManagePage: FC<ManagePageProps> = ({ stations }) => {
   return (
     <>
       <h1>Manage page: add Stations and Trips</h1>
-      <Manage />
+      <Manage stations={stations} />
     </>
   );
 };
