@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 type OneStationType = {
   id: number;
@@ -16,6 +16,20 @@ type OneStationType = {
 };
 
 const AddStationsManually: FC = () => {
+  const [oneStation, setOneStation] = useState<OneStationType>({
+    id: 0,
+    nameFi: '',
+    nameSwe: '',
+    nameEn: '',
+    addressFi: '',
+    addressSwe: '',
+    cityFi: '',
+    citySwe: '',
+    operator: '',
+    capacities: 0,
+    coordinateX: 0,
+    coordinateY: 0,
+  });
   return (
     <>
       <form>
