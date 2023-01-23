@@ -60,6 +60,12 @@ const AddTripsManually: FC<ManageComponentProps> = ({ stations }) => {
               id='returnDate'
               className='form-control'
               required={true}
+              onChange={(e) =>
+                setOneTrip({
+                  ...oneTrip,
+                  returnDate: new Date(e.target.value),
+                })
+              }
             />
           </div>
           <div className='col-md-9'>
