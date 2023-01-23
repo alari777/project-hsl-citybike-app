@@ -4,13 +4,24 @@ import AddStationsManually from '@/components/Manage/AddStationsManually/AddStat
 import AddTripsRemotely from '@/components/Manage/AddTripsRemotely/AddTripsRemotely';
 import AddTripsManually from '@/components/Manage/AddTripsManually/AddTripsManually';
 
-const Manage: FC = () => {
+type StationType = {
+  id: number;
+  nameFi: string;
+  nameSwe: string;
+  nameEn: string;
+};
+
+interface ManageComponentProps {
+  stations: StationType[];
+}
+
+const Manage: FC<ManageComponentProps> = ({ stations }) => {
   return (
     <>
       <AddStationsRemotely />
       <AddStationsManually />
       <AddTripsRemotely />
-      <AddTripsManually />
+      <AddTripsManually stations={stations} />
     </>
   );
 };
