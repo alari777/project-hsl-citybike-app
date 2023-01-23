@@ -16,6 +16,7 @@ type OneStationType = {
 };
 
 const AddStationsManually: FC = () => {
+  const [classSpinner, setClassSpinner] = useState<boolean>(false);
   const [oneStation, setOneStation] = useState<OneStationType>({
     id: 0,
     nameFi: '',
