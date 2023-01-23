@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Report from '@/components/Manage/Report/Report';
 
 const AddTripsRemotely: FC = () => {
   return (
