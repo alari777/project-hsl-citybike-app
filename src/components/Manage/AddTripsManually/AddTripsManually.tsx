@@ -182,6 +182,7 @@ const AddTripsManually: FC<ManageComponentProps> = ({ stations }) => {
           )}
           Add trip
         </button>
+        <Report reports={report} typeReport='AddTripsManually' />
       </form>
     </>
   );
