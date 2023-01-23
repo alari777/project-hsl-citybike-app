@@ -69,6 +69,13 @@ const AddStationsManually: FC = () => {
             id='operator'
             placeholder='Enter operator'
           />
+          <label htmlFor='capacities'>Enter capacities</label>
+          <input
+            type='number'
+            className='form-control'
+            id='capacities'
+            placeholder='Enter capacities'
+          />
         </div>
         <button type='submit' className='btn btn-primary mt-3'>
           Add station
