@@ -72,177 +72,200 @@ const AddStationsManually: FC = () => {
   return (
     <>
       <form onSubmit={addStation}>
-        <div className='form-group row'>
-          <label htmlFor='idStation'>ID station *</label>
-          <input
-            type='number'
-            className='form-control'
-            id='idStation'
-            placeholder='Enter ID station'
-            required={true}
-            onChange={(e) =>
-              setOneStation({
-                ...oneStation,
-                id: Number(e.target.value),
-              })
-            }
-          />
-
-          <label htmlFor='nameFi'>Station name FI *</label>
-          <input
-            type='text'
-            className='form-control'
-            id='nameFi'
-            placeholder='Enter station name FI'
-            required={true}
-            onChange={(e) =>
-              setOneStation({
-                ...oneStation,
-                nameFi: e.target.value,
-              })
-            }
-          />
-          <label htmlFor='nameSwe'>Station name SWE *</label>
-          <input
-            type='text'
-            className='form-control'
-            id='nameSwe'
-            placeholder='Enter station name SWE'
-            required={true}
-            onChange={(e) =>
-              setOneStation({
-                ...oneStation,
-                nameSwe: e.target.value,
-              })
-            }
-          />
-          <label htmlFor='nameEn'>Station name EN *</label>
-          <input
-            type='text'
-            className='form-control'
-            id='nameEn'
-            placeholder='Enter station name EN'
-            required={true}
-            onChange={(e) =>
-              setOneStation({
-                ...oneStation,
-                nameEn: e.target.value,
-              })
-            }
-          />
-          <label htmlFor='addressFi'>Station address FI *</label>
-          <input
-            type='text'
-            className='form-control'
-            id='addressFi'
-            placeholder='Enter address FI'
-            required={true}
-            onChange={(e) =>
-              setOneStation({
-                ...oneStation,
-                addressFi: e.target.value,
-              })
-            }
-          />
-          <label htmlFor='addressSwe'>Station address SWE *</label>
-          <input
-            type='text'
-            className='form-control'
-            id='addressSwe'
-            placeholder='Enter address SWE'
-            required={true}
-            onChange={(e) =>
-              setOneStation({
-                ...oneStation,
-                addressSwe: e.target.value,
-              })
-            }
-          />
-          <label htmlFor='cityFi'>Enter city FI</label>
-          <input
-            type='text'
-            className='form-control'
-            id='cityFi'
-            placeholder='Enter city FI'
-            onChange={(e) =>
-              setOneStation({
-                ...oneStation,
-                cityFi: e.target.value,
-              })
-            }
-          />
-          <label htmlFor='citySwe'>Enter city SWE</label>
-          <input
-            type='text'
-            className='form-control'
-            id='citySwe'
-            placeholder='Enter city SWE'
-            onChange={(e) =>
-              setOneStation({
-                ...oneStation,
-                citySwe: e.target.value,
-              })
-            }
-          />
-          <label htmlFor='operator'>Enter operator</label>
-          <input
-            type='text'
-            className='form-control'
-            id='operator'
-            placeholder='Enter operator'
-            onChange={(e) =>
-              setOneStation({
-                ...oneStation,
-                operator: e.target.value,
-              })
-            }
-          />
-          <label htmlFor='capacities'>Enter capacities *</label>
-          <input
-            type='number'
-            className='form-control'
-            id='capacities'
-            placeholder='Enter capacities'
-            required={true}
-            onChange={(e) =>
-              setOneStation({
-                ...oneStation,
-                capacities: Number(e.target.value),
-              })
-            }
-          />
-          <label htmlFor='coordinateX'>Enter coordinateX *</label>
-          <input
-            type='number'
-            className='form-control'
-            id='coordinateX'
-            placeholder='Enter coordinateX'
-            required={true}
-            step={0.0000001}
-            max={99}
-            onChange={(e) =>
-              setOneStation({
-                ...oneStation,
-                coordinateX: parseFloat(e.target.value),
-              })
-            }
-          />
-          <label htmlFor='coordinateY'>Enter coordinateY *</label>
-          <input
-            type='number'
-            className='form-control'
-            id='coordinateY'
-            placeholder='Enter coordinateY'
-            required={true}
-            step={0.0000001}
-            max={99}
-            onChange={(e) =>
-              setOneStation({
-                ...oneStation,
-                coordinateY: parseFloat(e.target.value),
-              })
-            }
-          />
+        <div className='form-row'>
+          <div className='col-md-9'>
+            <label htmlFor='idStation'>ID station *</label>
+            <input
+              type='number'
+              className='form-control'
+              id='idStation'
+              placeholder='Enter ID station'
+              required={true}
+              onChange={(e) =>
+                setOneStation({
+                  ...oneStation,
+                  id: Number(e.target.value),
+                })
+              }
+            />
+          </div>
+          <div className='col-md-9'>
+            <label htmlFor='nameFi'>Station name FI *</label>
+            <input
+              type='text'
+              className='form-control'
+              id='nameFi'
+              placeholder='Enter station name FI'
+              required={true}
+              onChange={(e) =>
+                setOneStation({
+                  ...oneStation,
+                  nameFi: e.target.value,
+                })
+              }
+            />
+          </div>
+          <div className='col-md-9'>
+            <label htmlFor='nameSwe'>Station name SWE *</label>
+            <input
+              type='text'
+              className='form-control'
+              id='nameSwe'
+              placeholder='Enter station name SWE'
+              required={true}
+              onChange={(e) =>
+                setOneStation({
+                  ...oneStation,
+                  nameSwe: e.target.value,
+                })
+              }
+            />
+          </div>
+          <div className='col-md-9'>
+            <label htmlFor='nameEn'>Station name EN *</label>
+            <input
+              type='text'
+              className='form-control'
+              id='nameEn'
+              placeholder='Enter station name EN'
+              required={true}
+              onChange={(e) =>
+                setOneStation({
+                  ...oneStation,
+                  nameEn: e.target.value,
+                })
+              }
+            />
+          </div>
+          <div className='col-md-9'>
+            <label htmlFor='addressFi'>Station address FI *</label>
+            <input
+              type='text'
+              className='form-control'
+              id='addressFi'
+              placeholder='Enter address FI'
+              required={true}
+              onChange={(e) =>
+                setOneStation({
+                  ...oneStation,
+                  addressFi: e.target.value,
+                })
+              }
+            />
+          </div>
+          <div className='col-md-9'>
+            <label htmlFor='addressSwe'>Station address SWE *</label>
+            <input
+              type='text'
+              className='form-control'
+              id='addressSwe'
+              placeholder='Enter address SWE'
+              required={true}
+              onChange={(e) =>
+                setOneStation({
+                  ...oneStation,
+                  addressSwe: e.target.value,
+                })
+              }
+            />
+          </div>
+          <div className='col-md-9'>
+            <label htmlFor='cityFi'>Enter city FI</label>
+            <input
+              type='text'
+              className='form-control'
+              id='cityFi'
+              placeholder='Enter city FI'
+              onChange={(e) =>
+                setOneStation({
+                  ...oneStation,
+                  cityFi: e.target.value,
+                })
+              }
+            />
+          </div>
+          <div className='col-md-9'>
+            <label htmlFor='citySwe'>Enter city SWE</label>
+            <input
+              type='text'
+              className='form-control'
+              id='citySwe'
+              placeholder='Enter city SWE'
+              onChange={(e) =>
+                setOneStation({
+                  ...oneStation,
+                  citySwe: e.target.value,
+                })
+              }
+            />
+          </div>
+          <div className='col-md-9'>
+            <label htmlFor='operator'>Enter operator</label>
+            <input
+              type='text'
+              className='form-control'
+              id='operator'
+              placeholder='Enter operator'
+              onChange={(e) =>
+                setOneStation({
+                  ...oneStation,
+                  operator: e.target.value,
+                })
+              }
+            />
+          </div>
+          <div className='col-md-9'>
+            <label htmlFor='capacities'>Enter capacities *</label>
+            <input
+              type='number'
+              className='form-control'
+              id='capacities'
+              placeholder='Enter capacities'
+              required={true}
+              onChange={(e) =>
+                setOneStation({
+                  ...oneStation,
+                  capacities: Number(e.target.value),
+                })
+              }
+            />
+          </div>
+          <div className='col-md-9'>
+            <label htmlFor='coordinateX'>Enter coordinateX *</label>
+            <input
+              type='number'
+              className='form-control'
+              id='coordinateX'
+              placeholder='Enter coordinateX'
+              required={true}
+              step={0.0000001}
+              max={99}
+              onChange={(e) =>
+                setOneStation({
+                  ...oneStation,
+                  coordinateX: parseFloat(e.target.value),
+                })
+              }
+            />
+          </div>
+          <div className='col-md-9'>
+            <label htmlFor='coordinateY'>Enter coordinateY *</label>
+            <input
+              type='number'
+              className='form-control'
+              id='coordinateY'
+              placeholder='Enter coordinateY'
+              required={true}
+              step={0.0000001}
+              max={99}
+              onChange={(e) =>
+                setOneStation({
+                  ...oneStation,
+                  coordinateY: parseFloat(e.target.value),
+                })
+              }
+            />
+          </div>
         </div>
         <button type='submit' className='btn btn-primary mt-3'>
           {classSpinner && (
