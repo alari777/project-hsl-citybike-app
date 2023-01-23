@@ -1,5 +1,20 @@
 import { FC } from 'react';
 
+type OneStationType = {
+  id: number;
+  nameFi: string;
+  nameSwe: string;
+  nameEn: string;
+  addressFi: string;
+  addressSwe: string;
+  cityFi: string;
+  citySwe: string;
+  operator: string;
+  capacities: number;
+  coordinateX: number;
+  coordinateY: number;
+};
+
 const AddStationsManually: FC = () => {
   return (
     <>
