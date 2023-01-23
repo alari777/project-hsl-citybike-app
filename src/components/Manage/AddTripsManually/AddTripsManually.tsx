@@ -65,6 +65,17 @@ const AddTripsManually: FC = () => {
               <option>-</option>
             </select>
           </div>
+          <div className='col-md-9'>
+            <label htmlFor='duration'>Duration *</label>
+            <input
+              type='number'
+              className='form-control'
+              id='duration'
+              placeholder='Enter duration'
+              required={true}
+              min={10}
+            />
+          </div>
         </div>
         <button type='submit' className='btn btn-primary mt-3'>
           {classSpinner && (
