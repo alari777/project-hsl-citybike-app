@@ -1,5 +1,6 @@
 import { FC, useState, FormEvent } from 'react';
 import Report from '@/components/Manage/Report/Report';
+import style from '@/components/Manage/AddStationsRemotely/AddStationsRemotely.module.scss';
 
 const AddStationsRemotely: FC = () => {
   const [urlStation, setUrlStation] = useState<string>('');
@@ -43,7 +44,7 @@ const AddStationsRemotely: FC = () => {
   };
 
   return (
-    <>
+    <div className={style.stations}>
       <form onSubmit={importStations}>
         <div className='form-group'>
           <label htmlFor='stationsRemotelyUrl'>URL for fetching stations</label>
@@ -72,7 +73,7 @@ const AddStationsRemotely: FC = () => {
         </button>
         <Report reports={report} typeReport='AddStationsRemotely' />
       </form>
-    </>
+    </div>
   );
 };
 
