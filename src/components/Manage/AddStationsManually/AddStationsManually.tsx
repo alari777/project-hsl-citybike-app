@@ -216,6 +216,13 @@ const AddStationsManually: FC = () => {
           />
         </div>
         <button type='submit' className='btn btn-primary mt-3'>
+          {classSpinner && (
+            <span
+              className='spinner-border spinner-border-sm'
+              role='status'
+              aria-hidden='true'
+            ></span>
+          )}
           Add station
         </button>
       </form>
