@@ -54,7 +54,7 @@ const AddStationsManually: FC = () => {
 
   return (
     <>
-      <form>
+      <form onSubmit={addStation}>
         <div className='form-group'>
           <label htmlFor='idStation'>ID station</label>
           <input
