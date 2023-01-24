@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import { FC } from 'react';
+import { GetServerSidePropsContext } from 'next';
+import { getTrips } from '@/pages/api/getTrips';
 
 type TripType = {
   id: number;
@@ -33,3 +35,11 @@ const HomePage: FC = () => {
 };
 
 export default HomePage;
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const result = await getTrips();
+  const trips = JSON.parse(result);
+  return {
+    props: { trips }, // will be passed to the page component as props
+  };
+}
