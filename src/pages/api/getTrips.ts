@@ -14,6 +14,14 @@ export const getTrips = async (
   // Also response per each trip has 2 short joined object with related stations:
   // `departure` and `return`
   const trips = await prisma.trips.findMany({
+    where: {
+      AND: [
+        {
+          coveredDistance: { gt: filterDistance },
+          duration: { gt: filterDuration },
+        },
+      ],
+    },
     include: {
       // NameFi of departure station
       Stations_Trips_departureStationIdToStations: {
