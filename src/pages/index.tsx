@@ -89,7 +89,6 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
                 <th scope='col'>Return Station</th>
                 <th scope='col'>Covered Distance</th>
                 <th scope='col'>Duration</th>
-                <th scope='col'>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -108,9 +107,6 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
                     </td>
                     <td>{trip.coveredDistance}m</td>
                     <td>{trip.duration}s</td>
-                    <td>
-                      <button>Delete</button>
-                    </td>
                   </tr>
                 ))}
             </tbody>
