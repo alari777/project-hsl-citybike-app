@@ -18,7 +18,8 @@ const TablePagination: FC<TablePaginationComponentProps> = ({
               className='page-link'
               style={{ cursor: 'pointer' }}
               onClick={async () => {
-                const nextPageNumber = pageNumber - 1;
+                let nextPageNumber = pageNumber - 1;
+                if (nextPageNumber < 0) nextPageNumber = 0;
                 await onPageHandleClick(nextPageNumber);
               }}
             >
@@ -37,7 +38,7 @@ const TablePagination: FC<TablePaginationComponentProps> = ({
               className='page-link'
               style={{ cursor: 'pointer' }}
               onClick={async () => {
-                const nextPageNumber = pageNumber - 1;
+                const nextPageNumber = pageNumber + 1;
                 await onPageHandleClick(nextPageNumber);
               }}
             >
