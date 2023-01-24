@@ -14,7 +14,14 @@ const TablePagination: FC<TablePaginationComponentProps> = ({
       <nav aria-label='...'>
         <ul className='pagination'>
           <li className='page-item'>
-            <div className='page-link' style={{ cursor: 'pointer' }}>
+            <div
+              className='page-link'
+              style={{ cursor: 'pointer' }}
+              onClick={async () => {
+                const nextPageNumber = pageNumber - 1;
+                await onPageHandleClick(nextPageNumber);
+              }}
+            >
               Previous
             </div>
           </li>
@@ -26,7 +33,14 @@ const TablePagination: FC<TablePaginationComponentProps> = ({
           </li>
 
           <li className='page-item'>
-            <div className='page-link' style={{ cursor: 'pointer' }}>
+            <div
+              className='page-link'
+              style={{ cursor: 'pointer' }}
+              onClick={async () => {
+                const nextPageNumber = pageNumber - 1;
+                await onPageHandleClick(nextPageNumber);
+              }}
+            >
               Next
             </div>
           </li>
