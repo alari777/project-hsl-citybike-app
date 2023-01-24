@@ -3,7 +3,11 @@ import { NotFoundException } from 'next-api-decorators';
 
 const prisma = new PrismaClient();
 
-export const getTrips = async (pageNumber: number) => {
+export const getTrips = async (
+  pageNumber: number,
+  filterDistance: number = 10,
+  filterDuration: number = 10
+) => {
   const skip = pageNumber * 100;
   const take = 100;
   // To get first 100 trips-records from DB.
