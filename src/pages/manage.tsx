@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { GetServerSidePropsContext } from 'next';
 import { getStations } from '@/pages/api/getStations';
 import Manage from '@/components/Manage/Manage';
-import { StationType } from '@/pages/api/v1/download/stations/types/download.stations.types';
+import { StationType } from '@/types/manage.types';
 
 interface ManagePageProps {
   stations: StationType[];
