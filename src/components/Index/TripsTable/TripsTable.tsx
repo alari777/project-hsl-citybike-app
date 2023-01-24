@@ -1,17 +1,6 @@
 import { FC } from 'react';
 import { formatTime } from '@/utils/formatTime/formatTime';
-
-type TripType = {
-  id: number;
-  departureDate: string;
-  coveredDistance: string;
-  duration: string;
-  returnDate: string;
-  departureStationId?: number;
-  returnStationId?: number;
-  Stations_Trips_departureStationIdToStations: { nameFi: string };
-  Stations_Trips_returnStationIdToStations: { nameFi: string };
-};
+import { TripType } from '@/types/index.types';
 
 interface TripsTableComponentProps {
   tableTrips: TripType[];
