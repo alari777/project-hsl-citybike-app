@@ -3,6 +3,7 @@ import { FC, useState } from 'react';
 import { GetServerSidePropsContext } from 'next';
 import { getTrips } from '@/pages/api/getTrips';
 import homeStyles from '@/styles/Home.module.css';
+import { formatTime } from '@/utils/formatTime/formatTime';
 
 type TripType = {
   id: number;
@@ -56,8 +57,8 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
                   <tr key={trip.id}>
                     <th scope='row'>{index + 1}</th>
                     <td>{trip.id}</td>
-                    <td>{trip.returnDate}</td>
-                    <td>{trip.returnDate}</td>
+                    <td>{formatTime(trip.departureDate)}</td>
+                    <td>{formatTime(trip.returnDate)}</td>
                     <td>
                       {trip.Stations_Trips_departureStationIdToStations.nameFi}
                     </td>
