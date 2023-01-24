@@ -9,3 +9,8 @@ export type TripType = {
   Stations_Trips_departureStationIdToStations: { nameFi: string };
   Stations_Trips_returnStationIdToStations: { nameFi: string };
 };
+
+export type FiltersType = {
+  coveredDistance: number;
+  duration: number;
+};
