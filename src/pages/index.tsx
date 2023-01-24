@@ -19,6 +19,11 @@ type TripType = {
   Stations_Trips_returnStationIdToStations: { nameFi: string };
 };
 
+type FiltersType = {
+  coveredDistance: number;
+  duration: number;
+};
+
 interface ManagePageProps {
   trips: TripType[];
 }
@@ -30,12 +35,19 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
 
   // This function makes request to server in order to get next N trip-records from DB.
   // + Filters.
-  const onPageHandleClick = async (nextPageNumber: number): Promise<void> => {
+  const onPageHandleClick = async (
+    nextPageNumber: number,
+    filters: FiltersType = { coveredDistance: 10, duration: 10 }
+  ): Promise<void> => {
     setIsLoading(false);
     try {
-      const response = await fetch(`/api/v1/trip/${nextPageNumber}`, {
-        method: 'GET',
-      });
+      const { coveredDistance, duration } = filters;
+      const response = await fetch(
+        `/api/v1/trip/${nextPageNumber}?distance=${coveredDistance}&duration=${duration}`,
+        {
+          method: 'GET',
+        }
+      );
       if (response.status === 200) {
         const result: TripType[] = await response.json();
         setPageNumber(nextPageNumber);
@@ -62,8 +74,11 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
             pageNumber={pageNumber}
             onPageHandleClick={onPageHandleClick}
           />
-          <Filters />
-          <table className='table '>
+          <Filters
+            pageNumber={pageNumber}
+            onPageHandleClick={onPageHandleClick}
+          />
+          <table className='table'>
             <thead>
               <tr>
                 <th scope='col'>#</th>
