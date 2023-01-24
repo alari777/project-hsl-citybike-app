@@ -7,23 +7,7 @@ import { formatTime } from '@/utils/formatTime/formatTime';
 import TablePagination from '@/components/Index/TablePagination/TablePagination';
 import Filters from '@/components/Index/Filters/Filters';
 import TripsTable from '@/components/Index/TripsTable/TripsTable';
-
-type TripType = {
-  id: number;
-  departureDate: string;
-  coveredDistance: string;
-  duration: string;
-  returnDate: string;
-  departureStationId?: number;
-  returnStationId?: number;
-  Stations_Trips_departureStationIdToStations: { nameFi: string };
-  Stations_Trips_returnStationIdToStations: { nameFi: string };
-};
-
-type FiltersType = {
-  coveredDistance: number;
-  duration: number;
-};
+import { FiltersType, TripType } from '@/types/index.types';
 
 interface ManagePageProps {
   trips: TripType[];
