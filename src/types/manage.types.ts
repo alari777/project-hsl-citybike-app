@@ -19,3 +19,12 @@ export type OneStationType = {
   coordinateX: number;
   coordinateY: number;
 };
+
+type OneTripType = {
+  departureDate: Date | undefined;
+  returnDate: Date | undefined;
+  departureStationId: number;
+  returnStationId: number;
+  coveredDistance: number;
+  duration: number;
+};
