@@ -19,7 +19,7 @@ interface ManagePageProps {
   trips: TripType[];
 }
 
-const HomePage: FC = () => {
+const HomePage: FC<ManagePageProps> = ({ trips }) => {
   return (
     <>
       <Head>
