@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { FC, useState } from 'react';
 import { GetServerSidePropsContext } from 'next';
 import { getTrips } from '@/pages/api/getTrips';
+import homeStyles from '@/styles/Home.module.css';
 
 type TripType = {
   id: number;
@@ -34,7 +35,24 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <main className='main'>
-        <div>Hello world!</div>
+        <div className={homeStyles.cla}>
+          <table className='table '>
+            <thead>
+              <tr>
+                <th scope='col'>#</th>
+                <th scope='col'>ID</th>
+                <th scope='col'>Departure Date</th>
+                <th scope='col'>Return Date</th>
+                <th scope='col'>Departure Station</th>
+                <th scope='col'>Return Station</th>
+                <th scope='col'>Covered Distance</th>
+                <th scope='col'>Duration</th>
+                <th scope='col'>Delete</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </main>
     </>
   );
