@@ -20,7 +20,7 @@ export type OneStationType = {
   coordinateY: number;
 };
 
-type OneTripType = {
+export type OneTripType = {
   departureDate: Date | undefined;
   returnDate: Date | undefined;
   departureStationId: number;
