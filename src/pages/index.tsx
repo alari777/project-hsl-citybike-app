@@ -50,7 +50,28 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
                 <th scope='col'>Delete</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+              {trips &&
+                trips.map((trip: TripType, index: number) => (
+                  <tr key={trip.id}>
+                    <th scope='row'>{index + 1}</th>
+                    <td>{trip.id}</td>
+                    <td>{trip.returnDate}</td>
+                    <td>{trip.returnDate}</td>
+                    <td>
+                      {trip.Stations_Trips_departureStationIdToStations.nameFi}
+                    </td>
+                    <td>
+                      {trip.Stations_Trips_returnStationIdToStations.nameFi}
+                    </td>
+                    <td>{trip.coveredDistance}m</td>
+                    <td>{trip.duration}s</td>
+                    <td>
+                      <button>Delete</button>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
           </table>
         </div>
       </main>
