@@ -1,7 +1,67 @@
 import Head from 'next/head';
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import { GetServerSidePropsContext } from 'next';
+import { getTrips } from '@/pages/api/getTrips';
+import homeStyles from '@/styles/Home.module.css';
+import { formatTime } from '@/utils/formatTime/formatTime';
+import TablePagination from '@/components/Index/TablePagination/TablePagination';
+import Filters from '@/components/Index/Filters/Filters';
+import TripsTable from '@/components/Index/TripsTable/TripsTable';
 
-const HomePage: FC = () => {
+type TripType = {
+  id: number;
+  departureDate: string;
+  coveredDistance: string;
+  duration: string;
+  returnDate: string;
+  departureStationId?: number;
+  returnStationId?: number;
+  Stations_Trips_departureStationIdToStations: { nameFi: string };
+  Stations_Trips_returnStationIdToStations: { nameFi: string };
+};
+
+type FiltersType = {
+  coveredDistance: number;
+  duration: number;
+};
+
+interface ManagePageProps {
+  trips: TripType[];
+}
+
+const HomePage: FC<ManagePageProps> = ({ trips }) => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [tableTrips, setTableTrips] = useState<TripType[]>(trips);
+  const [pageNumber, setPageNumber] = useState<number>(0);
+
+  // This function makes request to server in order to get next N trip-records from DB.
+  // + Filters.
+  const onPageHandleClick = async (
+    nextPageNumber: number,
+    filters: FiltersType = { coveredDistance: 10, duration: 10 }
+  ): Promise<void> => {
+    setIsLoading(false);
+    try {
+      const { coveredDistance, duration } = filters;
+      const response = await fetch(
+        `/api/v1/trip/${nextPageNumber}?distance=${coveredDistance}&duration=${duration}`,
+        {
+          method: 'GET',
+        }
+      );
+      if (response.status === 200) {
+        const result: TripType[] = await response.json();
+        setPageNumber(nextPageNumber);
+        setTableTrips(result);
+      }
+    } catch (err) {}
+    setIsLoading(true);
+  };
+
+  if (!isLoading) {
+    return <h2>Wait a little bit. Data are loading ...</h2>;
+  }
+
   return (
     <>
       <Head>
@@ -10,10 +70,32 @@ const HomePage: FC = () => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <main className='main'>
-        <div>Hello world!</div>
+        <div className={homeStyles.cla}>
+          <TablePagination
+            pageNumber={pageNumber}
+            onPageHandleClick={onPageHandleClick}
+          />
+          <Filters
+            pageNumber={pageNumber}
+            onPageHandleClick={onPageHandleClick}
+          />
+          <TripsTable tableTrips={tableTrips} />
+          <TablePagination
+            pageNumber={pageNumber}
+            onPageHandleClick={onPageHandleClick}
+          />
+        </div>
       </main>
     </>
   );
 };
 
 export default HomePage;
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const result = await getTrips(0);
+  const trips = JSON.parse(result);
+  return {
+    props: { trips }, // will be passed to the page component as props
+  };
+}
