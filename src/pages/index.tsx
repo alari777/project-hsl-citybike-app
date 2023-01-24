@@ -11,7 +11,7 @@ type TripType = {
   returnDate: string;
   departureStationId?: number;
   returnStationId?: number;
-  departureStation: { nameFi: string };
+  Stations_Trips_departureStationIdToStations: { nameFi: string };
   Stations_Trips_returnStationIdToStations: { nameFi: string };
 };
 
