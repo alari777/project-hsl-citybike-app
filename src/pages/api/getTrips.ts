@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { NotFoundException } from 'next-api-decorators';
 
 const prisma = new PrismaClient();
 
