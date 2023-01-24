@@ -6,6 +6,7 @@ import homeStyles from '@/styles/Home.module.css';
 import { formatTime } from '@/utils/formatTime/formatTime';
 import TablePagination from '@/components/Index/TablePagination/TablePagination';
 import Filters from '@/components/Index/Filters/Filters';
+import TripsTable from '@/components/Index/TripsTable/TripsTable';
 
 type TripType = {
   id: number;
@@ -78,39 +79,7 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
             pageNumber={pageNumber}
             onPageHandleClick={onPageHandleClick}
           />
-          <table className='table'>
-            <thead>
-              <tr>
-                <th scope='col'>#</th>
-                <th scope='col'>ID</th>
-                <th scope='col'>Departure Date</th>
-                <th scope='col'>Return Date</th>
-                <th scope='col'>Departure Station</th>
-                <th scope='col'>Return Station</th>
-                <th scope='col'>Covered Distance</th>
-                <th scope='col'>Duration</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tableTrips &&
-                tableTrips.map((trip: TripType, index: number) => (
-                  <tr key={trip.id}>
-                    <th scope='row'>{index + 1}</th>
-                    <td>{trip.id}</td>
-                    <td>{formatTime(trip.departureDate)}</td>
-                    <td>{formatTime(trip.returnDate)}</td>
-                    <td>
-                      {trip.Stations_Trips_departureStationIdToStations.nameFi}
-                    </td>
-                    <td>
-                      {trip.Stations_Trips_returnStationIdToStations.nameFi}
-                    </td>
-                    <td>{trip.coveredDistance}m</td>
-                    <td>{trip.duration}s</td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
+          <TripsTable tableTrips={tableTrips} />
           <TablePagination
             pageNumber={pageNumber}
             onPageHandleClick={onPageHandleClick}
