@@ -27,6 +27,23 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
   const [tableTrips, setTableTrips] = useState<TripType[]>(trips);
   const [pageNumber, setPageNumber] = useState<number>(0);
 
+  // This function makes request to server in order to get next N trip-records from DB.
+  // + Filters.
+  const onPageHandleClick = async (nextPageNumber: number): Promise<void> => {
+    setIsLoading(false);
+    try {
+      const response = await fetch(`/api/v1/trip/${nextPageNumber}`, {
+        method: 'GET',
+      });
+      if (response.status === 200) {
+        const result: TripType[] = await response.json();
+        setPageNumber(nextPageNumber);
+        setTableTrips(result);
+      }
+    } catch (err) {}
+    setIsLoading(true);
+  };
+
   if (!isLoading) {
     return <h2>Wait a little bit. Data are loading ...</h2>;
   }
