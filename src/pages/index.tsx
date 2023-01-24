@@ -57,7 +57,10 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
       </Head>
       <main className='main'>
         <div className={homeStyles.cla}>
-          <TablePagination pageNumber={pageNumber} />
+          <TablePagination
+            pageNumber={pageNumber}
+            onPageHandleClick={onPageHandleClick}
+          />
           <table className='table '>
             <thead>
               <tr>
@@ -95,7 +98,10 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
                 ))}
             </tbody>
           </table>
-          <TablePagination pageNumber={pageNumber} />
+          <TablePagination
+            pageNumber={pageNumber}
+            onPageHandleClick={onPageHandleClick}
+          />
         </div>
       </main>
     </>
