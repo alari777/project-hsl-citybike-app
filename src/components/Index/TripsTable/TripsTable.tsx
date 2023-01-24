@@ -34,8 +34,13 @@ const TripsTable: FC<TripsTableComponentProps> = ({ tableTrips }) => {
                   {trip.Stations_Trips_departureStationIdToStations.nameFi}
                 </td>
                 <td>{trip.Stations_Trips_returnStationIdToStations.nameFi}</td>
-                <td>{trip.coveredDistance}m</td>
-                <td>{trip.duration}s</td>
+                <td>{(Number(trip.coveredDistance) / 1000).toFixed(2)} km</td>
+                <td>
+                  {new Date(Number(trip.duration) * 1000)
+                    .toISOString()
+                    .substring(11, 19)}
+                  h
+                </td>
               </tr>
             ))}
         </tbody>
