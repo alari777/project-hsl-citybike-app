@@ -4,6 +4,7 @@ import { GetServerSidePropsContext } from 'next';
 import { getTrips } from '@/pages/api/getTrips';
 import homeStyles from '@/styles/Home.module.css';
 import { formatTime } from '@/utils/formatTime/formatTime';
+import TablePagination from '@/components/Index/TablePagination/TablePagination';
 
 type TripType = {
   id: number;
@@ -39,6 +40,7 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
       </Head>
       <main className='main'>
         <div className={homeStyles.cla}>
+          <TablePagination pageNumber={pageNumber} />
           <table className='table '>
             <thead>
               <tr>
@@ -76,6 +78,7 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
                 ))}
             </tbody>
           </table>
+          <TablePagination pageNumber={pageNumber} />
         </div>
       </main>
     </>
