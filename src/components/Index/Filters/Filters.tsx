@@ -1,8 +1,27 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
-interface FiltersComponentProps {}
+type FiltersType = {
+  coveredDistance: number;
+  duration: number;
+};
 
-const Filters: FC<FiltersComponentProps> = ({}) => {
+interface FiltersComponentProps {
+  pageNumber: number;
+  onPageHandleClick: (
+    pageNumber: number,
+    filters?: FiltersType
+  ) => Promise<void>;
+}
+
+const Filters: FC<FiltersComponentProps> = ({
+  pageNumber,
+  onPageHandleClick,
+}) => {
+  const [filters, setFilters] = useState({
+    coveredDistance: 10,
+    duration: 10,
+  });
+
   return (
     <>
       <div>
