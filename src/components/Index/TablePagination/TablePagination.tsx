@@ -2,9 +2,13 @@ import { FC } from 'react';
 
 interface TablePaginationComponentProps {
   pageNumber: number;
+  onPageHandleClick: (pageNumber: number) => Promise<void>;
 }
 
-const TablePagination: FC<TablePaginationComponentProps> = ({ pageNumber }) => {
+const TablePagination: FC<TablePaginationComponentProps> = ({
+  pageNumber,
+  onPageHandleClick,
+}) => {
   return (
     <>
       <nav aria-label='...'>
