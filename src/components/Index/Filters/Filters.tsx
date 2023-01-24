@@ -67,7 +67,13 @@ const Filters: FC<FiltersComponentProps> = ({
             value={filters.duration}
           />
         </div>
-        <button onClick={() => console.log('filters')}>Apply filter</button>
+        <button
+          onClick={async () => {
+            await onPageHandleClick(pageNumber, filters);
+          }}
+        >
+          Apply filter
+        </button>
       </div>
     </>
   );
