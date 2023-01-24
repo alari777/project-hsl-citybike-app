@@ -23,6 +23,7 @@ interface ManagePageProps {
 
 const HomePage: FC<ManagePageProps> = ({ trips }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [tableTrips, setTableTrips] = useState<TripType[]>(trips);
 
   if (!isLoading) {
     return <h2>Wait a little bit. Data are loading ...</h2>;
