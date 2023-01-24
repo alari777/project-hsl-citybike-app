@@ -111,7 +111,7 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
 export default HomePage;
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const result = await getTrips();
+  const result = await getTrips(0);
   const trips = JSON.parse(result);
   return {
     props: { trips }, // will be passed to the page component as props
