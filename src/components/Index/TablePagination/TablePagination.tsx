@@ -1,9 +1,33 @@
 import { FC } from 'react';
 
-const TablePagination: FC = () => {
+interface TablePaginationComponentProps {
+  pageNumber: number;
+}
+
+const TablePagination: FC<TablePaginationComponentProps> = ({ pageNumber }) => {
   return (
     <>
-      <h1>Table Pagination</h1>
+      <nav aria-label='...'>
+        <ul className='pagination'>
+          <li className='page-item'>
+            <div className='page-link' style={{ cursor: 'pointer' }}>
+              Previous
+            </div>
+          </li>
+
+          <li className='page-item active'>
+            <a className='page-link sr-only' href='#'>
+              {pageNumber}
+            </a>
+          </li>
+
+          <li className='page-item'>
+            <div className='page-link' style={{ cursor: 'pointer' }}>
+              Next
+            </div>
+          </li>
+        </ul>
+      </nav>
     </>
   );
 };
