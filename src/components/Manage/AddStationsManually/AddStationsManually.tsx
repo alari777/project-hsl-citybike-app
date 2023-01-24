@@ -1,5 +1,6 @@
 import { FC, FormEvent, useState } from 'react';
 import Report from '@/components/Manage/Report/Report';
+import { OneStationType } from '@/types/manage.types';
 
 const AddStationsManually: FC = () => {
   const [classSpinner, setClassSpinner] = useState<boolean>(false);
