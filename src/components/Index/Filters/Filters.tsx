@@ -37,6 +37,13 @@ const Filters: FC<FiltersComponentProps> = ({
             className='form-control'
             aria-label='Default'
             aria-describedby='inputGroup-sizing-default'
+            onChange={(e) =>
+              setFilters({
+                ...filters,
+                coveredDistance: Number(e.target.value),
+              })
+            }
+            value={filters.coveredDistance}
           />
         </div>
         <div className='input-group mb-3'>
@@ -51,6 +58,13 @@ const Filters: FC<FiltersComponentProps> = ({
             className='form-control'
             aria-label='Default'
             aria-describedby='inputGroup-sizing-default'
+            onChange={(e) =>
+              setFilters({
+                ...filters,
+                duration: Number(e.target.value),
+              })
+            }
+            value={filters.duration}
           />
         </div>
         <button onClick={() => console.log('filters')}>Apply filter</button>
