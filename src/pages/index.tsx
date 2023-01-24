@@ -53,8 +53,8 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
               </tr>
             </thead>
             <tbody>
-              {trips &&
-                trips.map((trip: TripType, index: number) => (
+              {tableTrips &&
+                tableTrips.map((trip: TripType, index: number) => (
                   <tr key={trip.id}>
                     <th scope='row'>{index + 1}</th>
                     <td>{trip.id}</td>
