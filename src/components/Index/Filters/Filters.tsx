@@ -24,7 +24,7 @@ const Filters: FC<FiltersComponentProps> = ({
         <div className='input-group mb-3'>
           <div className='input-group-prepend'>
             <span className='input-group-text' id='filters-covered-distance'>
-              Covered Distance
+              Covered Distance in meters
             </span>
           </div>
           <input
@@ -45,7 +45,7 @@ const Filters: FC<FiltersComponentProps> = ({
         <div className='input-group mb-3'>
           <div className='input-group-prepend'>
             <span className='input-group-text' id='filters-duration'>
-              Duration
+              Duration in seconds
             </span>
           </div>
           <input
