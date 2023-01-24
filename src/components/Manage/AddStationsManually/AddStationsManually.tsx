@@ -1,20 +1,6 @@
 import { FC, FormEvent, useState } from 'react';
 import Report from '@/components/Manage/Report/Report';
-
-type OneStationType = {
-  id: number;
-  nameFi: string;
-  nameSwe: string;
-  nameEn: string;
-  addressFi: string;
-  addressSwe: string;
-  cityFi: string;
-  citySwe: string;
-  operator: string;
-  capacities: number;
-  coordinateX: number;
-  coordinateY: number;
-};
+import { OneStationType } from '@/types/manage.types';
 
 const AddStationsManually: FC = () => {
   const [classSpinner, setClassSpinner] = useState<boolean>(false);

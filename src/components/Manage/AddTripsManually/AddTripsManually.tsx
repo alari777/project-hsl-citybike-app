@@ -1,21 +1,6 @@
 import { FC, FormEvent, useState } from 'react';
 import Report from '@/components/Manage/Report/Report';
-
-type OneTripType = {
-  departureDate: Date | undefined;
-  returnDate: Date | undefined;
-  departureStationId: number;
-  returnStationId: number;
-  coveredDistance: number;
-  duration: number;
-};
-
-type StationType = {
-  id: number;
-  nameFi: string;
-  nameSwe: string;
-  nameEn: string;
-};
+import { OneTripType, StationType } from '@/types/manage.types';
 
 interface ManageComponentProps {
   stations: StationType[];

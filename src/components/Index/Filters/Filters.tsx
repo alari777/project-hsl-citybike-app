@@ -1,9 +1,5 @@
 import { FC, useState } from 'react';
-
-type FiltersType = {
-  coveredDistance: number;
-  duration: number;
-};
+import { FiltersType } from '@/types/index.types';
 
 interface FiltersComponentProps {
   pageNumber: number;
