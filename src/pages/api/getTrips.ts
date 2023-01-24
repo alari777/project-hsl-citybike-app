@@ -25,4 +25,9 @@ export const getTrips = async () => {
     skip: 0,
     take: 100,
   });
+
+  if (!trips) {
+    await prisma.$disconnect();
+    throw new NotFoundException('Trip not found.');
+  }
 };
