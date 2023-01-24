@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { GetServerSidePropsContext } from 'next';
 import { getTrips } from '@/pages/api/getTrips';
 
@@ -20,6 +20,8 @@ interface ManagePageProps {
 }
 
 const HomePage: FC<ManagePageProps> = ({ trips }) => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   return (
     <>
       <Head>
