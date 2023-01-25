@@ -72,6 +72,8 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
           <Filters
             pageNumber={pageNumber}
             onPageHandleClick={onPageHandleClick}
+            filters={filters}
+            onChangeFilters={onChangeFilters}
           />
           <TripsTable tableTrips={tableTrips} />
           <TablePagination
