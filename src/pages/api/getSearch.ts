@@ -12,6 +12,24 @@ export const searchInTrips = async (
   const skip = pageNumber * 100;
   const take = 100;
   const trips = await prisma.trips.findMany({
+    where: {
+      OR: [
+        {
+          Stations_Trips_departureStationIdToStations: {
+            nameFi: {
+              contains: search,
+            },
+          },
+        },
+        {
+          Stations_Trips_returnStationIdToStations: {
+            nameFi: {
+              contains: search,
+            },
+          },
+        },
+      ],
+    },
     include: {
       // NameFi of departure station
       Stations_Trips_departureStationIdToStations: {
