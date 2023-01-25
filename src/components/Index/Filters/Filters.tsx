@@ -1,26 +1,26 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { FiltersType } from '@/types/index.types';
+import styles from '@/components/Index/Filters/Filters.module.scss';
 
 interface FiltersComponentProps {
   pageNumber: number;
-  onPageHandleClick: (
-    pageNumber: number,
-    filters?: FiltersType
-  ) => Promise<void>;
+  onPageHandleClick: (pageNumber: number) => Promise<void>;
+  filters: FiltersType;
+  onChangeFilters: (
+    field: 'coveredDistance' | 'duration',
+    value: number
+  ) => void;
 }
 
 const Filters: FC<FiltersComponentProps> = ({
   pageNumber,
   onPageHandleClick,
+  filters,
+  onChangeFilters,
 }) => {
-  const [filters, setFilters] = useState({
-    coveredDistance: 10,
-    duration: 10,
-  });
-
   return (
     <>
-      <div>
+      <div className={styles.filters}>
         <div className='input-group mb-3'>
           <div className='input-group-prepend'>
             <span className='input-group-text' id='filters-covered-distance'>
@@ -34,10 +34,7 @@ const Filters: FC<FiltersComponentProps> = ({
             aria-label='Default'
             aria-describedby='inputGroup-sizing-default'
             onChange={(e) =>
-              setFilters({
-                ...filters,
-                coveredDistance: Number(e.target.value),
-              })
+              onChangeFilters('coveredDistance', Number(e.target.value))
             }
             value={filters.coveredDistance}
           />
@@ -55,17 +52,14 @@ const Filters: FC<FiltersComponentProps> = ({
             aria-label='Default'
             aria-describedby='inputGroup-sizing-default'
             onChange={(e) =>
-              setFilters({
-                ...filters,
-                duration: Number(e.target.value),
-              })
+              onChangeFilters('duration', Number(e.target.value))
             }
             value={filters.duration}
           />
         </div>
         <button
           onClick={async () => {
-            await onPageHandleClick(pageNumber, filters);
+            await onPageHandleClick(pageNumber);
           }}
         >
           Apply filter
