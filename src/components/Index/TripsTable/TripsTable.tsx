@@ -14,8 +14,8 @@ const TripsTable: FC<TripsTableComponentProps> = ({ tableTrips }) => {
           <tr>
             <th scope='col'>#</th>
             <th scope='col'>ID</th>
-            <th scope='col'>Departure Date</th>
-            <th scope='col'>Return Date</th>
+            {/*<th scope='col'>Departure Date</th>*/}
+            {/*<th scope='col'>Return Date</th>*/}
             <th scope='col'>Departure Station</th>
             <th scope='col'>Return Station</th>
             <th scope='col'>Covered Distance</th>
@@ -28,8 +28,8 @@ const TripsTable: FC<TripsTableComponentProps> = ({ tableTrips }) => {
               <tr key={trip.id}>
                 <th scope='row'>{index + 1}</th>
                 <td>{trip.id}</td>
-                <td>{formatTime(trip.departureDate)}</td>
-                <td>{formatTime(trip.returnDate)}</td>
+                {/*<td>{formatTime(trip.departureDate)}</td>*/}
+                {/*<td>{formatTime(trip.returnDate)}</td>*/}
                 <td>
                   {trip.Stations_Trips_departureStationIdToStations.nameFi}
                 </td>

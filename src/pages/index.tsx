@@ -16,13 +16,24 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [tableTrips, setTableTrips] = useState<TripType[]>(trips);
   const [pageNumber, setPageNumber] = useState<number>(0);
+  const [filters, setFilters] = useState({
+    coveredDistance: 10,
+    duration: 10,
+  });
+
+  const onChangeFilters = (
+    field: keyof typeof filters,
+    value: number
+  ): void => {
+    setFilters({
+      ...filters,
+      [field]: Number(value),
+    });
+  };
 
   // This function makes request to server in order to get next N trip-records from DB.
   // + Filters.
-  const onPageHandleClick = async (
-    nextPageNumber: number,
-    filters: FiltersType = { coveredDistance: 10, duration: 10 }
-  ): Promise<void> => {
+  const onPageHandleClick = async (nextPageNumber: number): Promise<void> => {
     setIsLoading(false);
     try {
       const { coveredDistance, duration } = filters;
@@ -54,11 +65,13 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
       </Head>
       <main className='main'>
         <div className={homeStyles.cla}>
-          <TablePagination
+          <Filters
             pageNumber={pageNumber}
             onPageHandleClick={onPageHandleClick}
+            filters={filters}
+            onChangeFilters={onChangeFilters}
           />
-          <Filters
+          <TablePagination
             pageNumber={pageNumber}
             onPageHandleClick={onPageHandleClick}
           />
