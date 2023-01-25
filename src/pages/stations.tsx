@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { StationType } from '@/types/manage.types';
 import { GetServerSidePropsContext } from 'next';
 import { getStations } from '@/pages/api/getStations';
+import Link from 'next/link';
 
 interface StationsPageProps {
   stations: StationType[];
@@ -24,6 +25,7 @@ const StationsPage: FC<StationsPageProps> = ({ stations }) => {
             <th scope='col'>Capacities</th>
             <th scope='col'>Coordinate X</th>
             <th scope='col'>Coordinate Y</th>
+            <th scope='col'>View</th>
           </tr>
         </thead>
         <tbody>
@@ -41,6 +43,9 @@ const StationsPage: FC<StationsPageProps> = ({ stations }) => {
                 <td>{station.capacities}</td>
                 <td>{station.coordinateX}</td>
                 <td>{station.coordinateY}</td>
+                <td>
+                  <Link href={`/stations/${station.fid}`}>View</Link>
+                </td>
               </tr>
             ))}
         </tbody>
