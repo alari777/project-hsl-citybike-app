@@ -4,9 +4,13 @@ import { TripType } from '@/types/index.types';
 
 interface TripsTableComponentProps {
   tableTrips: TripType[];
+  pageNumber: number;
 }
 
-const TripsTable: FC<TripsTableComponentProps> = ({ tableTrips }) => {
+const TripsTable: FC<TripsTableComponentProps> = ({
+  tableTrips,
+  pageNumber,
+}) => {
   return (
     <>
       <table className='table'>
@@ -26,7 +30,7 @@ const TripsTable: FC<TripsTableComponentProps> = ({ tableTrips }) => {
           {tableTrips &&
             tableTrips.map((trip: TripType, index: number) => (
               <tr key={trip.id}>
-                <th scope='row'>{index + 1}</th>
+                <th scope='row'>{pageNumber * 100 + index + 1}</th>
                 <td>{trip.id}</td>
                 {/*<td>{formatTime(trip.departureDate)}</td>*/}
                 {/*<td>{formatTime(trip.returnDate)}</td>*/}
