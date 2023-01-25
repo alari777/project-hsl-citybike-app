@@ -75,7 +75,7 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
             pageNumber={pageNumber}
             onPageHandleClick={onPageHandleClick}
           />
-          <TripsTable tableTrips={tableTrips} />
+          <TripsTable pageNumber={pageNumber} tableTrips={tableTrips} />
           <TablePagination
             pageNumber={pageNumber}
             onPageHandleClick={onPageHandleClick}
