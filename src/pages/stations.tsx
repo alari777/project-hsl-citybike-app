@@ -3,7 +3,7 @@ import { StationType } from '@/types/manage.types';
 import { GetServerSidePropsContext } from 'next';
 import { getStations } from '@/pages/api/getStations';
 import Link from 'next/link';
-import TablePagination from '@/components/Index/TablePagination/TablePagination';
+import TablePagination from '@/components/TablePagination/TablePagination';
 
 interface StationsPageProps {
   stations: StationType[];

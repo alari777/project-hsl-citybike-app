@@ -3,7 +3,7 @@ import { FC, useState } from 'react';
 import { GetServerSidePropsContext } from 'next';
 import { getTrips } from '@/pages/api/getTrips';
 import homeStyles from '@/styles/Home.module.css';
-import TablePagination from '@/components/Index/TablePagination/TablePagination';
+import TablePagination from '@/components/TablePagination/TablePagination';
 import Filters from '@/components/Index/Filters/Filters';
 import TripsTable from '@/components/Index/TripsTable/TripsTable';
 import { FiltersType, TripType } from '@/types/index.types';
