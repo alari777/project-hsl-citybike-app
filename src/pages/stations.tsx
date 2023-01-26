@@ -12,6 +12,10 @@ interface StationsPageProps {
 const StationsPage: FC<StationsPageProps> = ({ stations }) => {
   return (
     <>
+      <TablePagination
+        pageNumber={pageNumber}
+        onPageHandleClick={onPageHandleClick}
+      />
       <table className='table'>
         <thead>
           <tr>
@@ -68,6 +72,10 @@ const StationsPage: FC<StationsPageProps> = ({ stations }) => {
             ))}
         </tbody>
       </table>
+      <TablePagination
+        pageNumber={pageNumber}
+        onPageHandleClick={onPageHandleClick}
+      />
     </>
   );
 };
