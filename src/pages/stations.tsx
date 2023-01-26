@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { StationType } from '@/types/manage.types';
 import { GetServerSidePropsContext } from 'next';
 import { getStations } from '@/pages/api/getStations';
