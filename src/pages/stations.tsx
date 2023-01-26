@@ -10,6 +10,10 @@ interface StationsPageProps {
 }
 
 const StationsPage: FC<StationsPageProps> = ({ stations }) => {
+  const [pageNumber, setPageNumber] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [tableStations, setTableStations] = useState<StationType[]>(stations);
+
   return (
     <>
       <TablePagination
