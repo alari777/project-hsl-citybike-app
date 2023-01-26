@@ -14,6 +14,22 @@ const StationsPage: FC<StationsPageProps> = ({ stations }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [tableStations, setTableStations] = useState<StationType[]>(stations);
 
+  // This function makes request to server in order to get next N station-records from DB.
+  const onPageHandleClick = async (nextPageNumber: number): Promise<void> => {
+    setIsLoading(false);
+    try {
+      const response = await fetch(`/api/v1/station/${nextPageNumber}`, {
+        method: 'GET',
+      });
+      if (response.status === 200) {
+        const result: StationType[] = await response.json();
+        setPageNumber(nextPageNumber);
+        setTableStations(result);
+      }
+    } catch (err) {}
+    setIsLoading(true);
+  };
+
   if (!isLoading) {
     return <h2>Wait a little bit. Data are loading ...</h2>;
   }
