@@ -24,8 +24,12 @@ export const getSlugStation = async (fid: string): Promise<string> => {
     await prisma.$queryRaw`SELECT SUM(d.coveredDistance) as dCoveredDistance FROM Trips AS d WHERE d.departureStationId = ${Number(
       fid
     )}`;
+  const totalReturnDistance =
+    await prisma.$queryRaw`SELECT SUM(r.coveredDistance) as rCoveredDistance FROM Trips AS r WHERE r.returnStationId = ${Number(
+      fid
+    )}`;
 
   await prisma.$disconnect();
 
-  return JSON.stringify([station, totalDepartureDistance]);
+  return JSON.stringify([station, totalDepartureDistance, totalReturnDistance]);
 };
