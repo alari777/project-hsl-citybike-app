@@ -14,6 +14,10 @@ const StationsPage: FC<StationsPageProps> = ({ stations }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [tableStations, setTableStations] = useState<StationType[]>(stations);
 
+  if (!isLoading) {
+    return <h2>Wait a little bit. Data are loading ...</h2>;
+  }
+
   return (
     <>
       <TablePagination
