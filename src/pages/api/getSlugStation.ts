@@ -29,7 +29,29 @@ export const getSlugStation = async (fid: string): Promise<string> => {
       fid
     )}`;
 
+  // Top 5 most popular return stations for journeys starting from the station
+  const topReturnStations = await prisma.trips.groupBy({
+    by: ['returnStationId'],
+    _count: {
+      returnStationId: true,
+    },
+    where: {
+      departureStationId: Number(fid),
+    },
+    orderBy: {
+      _count: {
+        returnStationId: 'desc',
+      },
+    },
+    take: 5,
+  });
+
   await prisma.$disconnect();
 
-  return JSON.stringify([station, totalDepartureDistance, totalReturnDistance]);
+  return JSON.stringify([
+    station,
+    totalDepartureDistance,
+    totalReturnDistance,
+    topReturnStations,
+  ]);
 };
