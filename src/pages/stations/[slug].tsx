@@ -5,9 +5,19 @@ import { getSlugStation } from '@/pages/api/getSlugStation';
 
 interface SingleStationPageProps {
   stations: StationType[];
+  averageDepartureDistance: {
+    dCoveredDistance: number;
+  }[];
+  averageReturnDistance: {
+    rCoveredDistance: number;
+  }[];
 }
 
-const SingleStationPage: FC<SingleStationPageProps> = ({ stations }) => {
+const SingleStationPage: FC<SingleStationPageProps> = ({
+  stations,
+  averageDepartureDistance,
+  averageReturnDistance,
+}) => {
   return (
     <>
       <table className='table'>
@@ -20,7 +30,9 @@ const SingleStationPage: FC<SingleStationPageProps> = ({ stations }) => {
             <th scope='col'>Address FI</th>
             <th scope='col'>Address SWE</th>
             <th scope='col'>Amount starting</th>
+            <th scope='col'>Average staring distance</th>
             <th scope='col'>Amount ending</th>
+            <th scope='col'>Average ending distance</th>
           </tr>
         </thead>
         <tbody>
@@ -36,7 +48,25 @@ const SingleStationPage: FC<SingleStationPageProps> = ({ stations }) => {
                 <td>
                   {station._count.Trips_Trips_departureStationIdToStations}
                 </td>
+                <td>
+                  {station._count.Trips_Trips_departureStationIdToStations &&
+                    (
+                      averageDepartureDistance[0].dCoveredDistance /
+                      station._count.Trips_Trips_departureStationIdToStations /
+                      1000
+                    ).toFixed(2)}
+                  km
+                </td>
                 <td>{station._count.Trips_Trips_returnStationIdToStations}</td>
+                <td>
+                  {station._count.Trips_Trips_returnStationIdToStations &&
+                    (
+                      averageReturnDistance[0].rCoveredDistance /
+                      station._count.Trips_Trips_returnStationIdToStations /
+                      1000
+                    ).toFixed(2)}
+                  km
+                </td>
               </tr>
             ))}
         </tbody>
@@ -52,7 +82,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const slug = query.slug as string;
   const stations = await getSlugStation(slug);
 
+  const results = JSON.parse(stations);
+
   return {
-    props: { stations: JSON.parse(stations) }, // will be passed to the page component as props
+    props: {
+      stations: results[0],
+      averageDepartureDistance: results[1],
+      averageReturnDistance: results[2],
+    }, // will be passed to the page component as props
   };
 }
