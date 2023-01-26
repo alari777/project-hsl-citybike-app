@@ -33,8 +33,8 @@ const StationsPage: FC<StationsPageProps> = ({ stations }) => {
           </tr>
         </thead>
         <tbody>
-          {stations &&
-            stations.map((station: StationType) => (
+          {tableStations &&
+            tableStations.map((station: StationType) => (
               <tr key={station.nameFi}>
                 <td>{station.fid}</td>
                 <td>
