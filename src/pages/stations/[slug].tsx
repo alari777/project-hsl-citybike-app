@@ -3,6 +3,14 @@ import { StationType } from '@/types/manage.types';
 import { GetServerSidePropsContext } from 'next';
 import { getSlugStation } from '@/pages/api/getSlugStation';
 
+type Top5Type = {
+  departureStationId: number;
+  name1: string;
+  returnStationId: number;
+  name2: string;
+  DepartureCount: number;
+};
+
 interface SingleStationPageProps {
   stations: StationType[];
   averageDepartureDistance: {
@@ -11,12 +19,16 @@ interface SingleStationPageProps {
   averageReturnDistance: {
     rCoveredDistance: number;
   }[];
+  top5Departure: Top5Type[];
+  top5Return: Top5Type[];
 }
 
 const SingleStationPage: FC<SingleStationPageProps> = ({
   stations,
   averageDepartureDistance,
   averageReturnDistance,
+  top5Departure,
+  top5Return,
 }) => {
   return (
     <>
@@ -71,6 +83,54 @@ const SingleStationPage: FC<SingleStationPageProps> = ({
             ))}
         </tbody>
       </table>
+
+      <table className='table'>
+        <thead>
+          <tr>
+            <th scope='col'>Departure ID</th>
+            <th scope='col'>Station Name</th>
+            <th scope='col'>Return ID</th>
+            <th scope='col'>Station name</th>
+            <th scope='col'>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {top5Return &&
+            top5Return.map((station: Top5Type) => (
+              <tr key={station.returnStationId}>
+                <td>{station.departureStationId}</td>
+                <td>{station.name2}</td>
+                <td>{station.returnStationId}</td>
+                <td>{station.name1}</td>
+                <td>{station.DepartureCount}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+
+      <table className='table'>
+        <thead>
+          <tr>
+            <th scope='col'>Departure ID</th>
+            <th scope='col'>Station Name</th>
+            <th scope='col'>Return ID</th>
+            <th scope='col'>Station name</th>
+            <th scope='col'>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {top5Departure &&
+            top5Departure.map((station: Top5Type) => (
+              <tr key={station.departureStationId}>
+                <td>{station.departureStationId}</td>
+                <td>{station.name1}</td>
+                <td>{station.returnStationId}</td>
+                <td>{station.name2}</td>
+                <td>{station.DepartureCount}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
     </>
   );
 };
@@ -89,6 +149,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       stations: results[0],
       averageDepartureDistance: results[1],
       averageReturnDistance: results[2],
+      top5Departure: results[3],
+      top5Return: results[4],
     }, // will be passed to the page component as props
   };
 }
