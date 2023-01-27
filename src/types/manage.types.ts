@@ -12,7 +12,7 @@ export type StationType = {
   capacities?: number;
   coordinateX?: number;
   coordinateY?: number;
-  _count: {
+  _count?: {
     Trips_Trips_departureStationIdToStations?: number | undefined;
     Trips_Trips_returnStationIdToStations?: number | undefined;
   };
