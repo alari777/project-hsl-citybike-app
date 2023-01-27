@@ -107,6 +107,30 @@ const SingleStationPage: FC<SingleStationPageProps> = ({
             ))}
         </tbody>
       </table>
+
+      <table className='table'>
+        <thead>
+          <tr>
+            <th scope='col'>Departure ID</th>
+            <th scope='col'>Station Name</th>
+            <th scope='col'>Return ID</th>
+            <th scope='col'>Station name</th>
+            <th scope='col'>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {top5Departure &&
+            top5Departure.map((station: Top5Type) => (
+              <tr key={station.departureStationId}>
+                <td>{station.departureStationId}</td>
+                <td>{station.name1}</td>
+                <td>{station.returnStationId}</td>
+                <td>{station.name2}</td>
+                <td>{station.DepartureCount}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
     </>
   );
 };
