@@ -58,23 +58,23 @@ const SingleStationPage: FC<SingleStationPageProps> = ({
                 <td>{station.addressFi}</td>
                 <td>{station.addressSwe}</td>
                 <td>
-                  {station._count.Trips_Trips_departureStationIdToStations}
+                  {station._count!.Trips_Trips_departureStationIdToStations}
                 </td>
                 <td>
-                  {station._count.Trips_Trips_departureStationIdToStations &&
+                  {station._count!.Trips_Trips_departureStationIdToStations &&
                     (
                       averageDepartureDistance[0].dCoveredDistance /
-                      station._count.Trips_Trips_departureStationIdToStations /
+                      station._count!.Trips_Trips_departureStationIdToStations /
                       1000
                     ).toFixed(2)}
                   km
                 </td>
-                <td>{station._count.Trips_Trips_returnStationIdToStations}</td>
+                <td>{station._count!.Trips_Trips_returnStationIdToStations}</td>
                 <td>
-                  {station._count.Trips_Trips_returnStationIdToStations &&
+                  {station._count!.Trips_Trips_returnStationIdToStations &&
                     (
                       averageReturnDistance[0].rCoveredDistance /
-                      station._count.Trips_Trips_returnStationIdToStations /
+                      station._count!.Trips_Trips_returnStationIdToStations /
                       1000
                     ).toFixed(2)}
                   km
