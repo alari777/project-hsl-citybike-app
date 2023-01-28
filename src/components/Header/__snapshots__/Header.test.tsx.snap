@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render header should render manage link in header navbar 1`] = `
+<a
+  class="nav-item nav-link"
+  data-testid="nav-manage"
+  href="/manage"
+>
+  Manage: trips and stations
+</a>
+`;
+
+exports[`should render header should render stations link in header navbar 1`] = `
+<a
+  class="nav-item nav-link"
+  data-testid="nav-stations"
+  href="/stations"
+>
+  Stations
+</a>
+`;
+
+exports[`should render header should render trips link in header navbar 1`] = `
+<a
+  class="nav-item nav-link active"
+  data-testid="nav-trips"
+  href="/"
+>
+  Trips
+</a>
+`;
