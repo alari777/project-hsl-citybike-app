@@ -1,4 +1,4 @@
-import { PrismaClient, Prisma } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -61,13 +61,12 @@ export const getSlugStation = async (fid: string): Promise<string> => {
   });
 
   // Top 5 most popular departure stations for journeys ending at the station
-  const topDepartureStations: Top5Type[] = await prisma.$queryRaw(
-    Prisma.sql`SELECT t.departureStationId, s2.nameFi as name1, t.returnStationId, s1.nameFi as name2, COUNT(t.returnStationId) AS DepartureCount FROM Trips AS t LEFT JOIN Stations AS s1 ON s1.fid = ${Number(
+  const topDepartureStations: Top5Type[] =
+    await prisma.$queryRaw`SELECT t.departureStationId, s2.nameFi as name1, t.returnStationId, s1.nameFi as name2, COUNT(t.returnStationId) AS DepartureCount FROM Trips AS t LEFT JOIN Stations AS s1 ON s1.fid = ${Number(
       fid
     )} LEFT JOIN Stations AS s2 ON s2.fid = t.returnStationId WHERE t.departureStationId = ${Number(
       fid
-    )} GROUP BY t.returnStationId ORDER BY DepartureCount DESC LIMIT 5`
-  );
+    )} GROUP BY t.returnStationId ORDER BY DepartureCount DESC LIMIT 5`;
 
   const top5Departure: Top5Type[] = [];
   topDepartureStations.map((item) => {
