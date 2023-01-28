@@ -11,5 +11,5 @@ ENV NODE_ENV production
 RUN npm run build
 RUN npm prune --production
 
-CMD npm start
 EXPOSE 3000
+CMD npx prisma generate && npx prisma db push && npm start
