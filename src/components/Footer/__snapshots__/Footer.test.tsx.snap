@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render footer 1`] = `
+<footer
+  class="footer"
+>
+  Helsinki city bike. Created at NextJS. 2023
+</footer>
+`;
