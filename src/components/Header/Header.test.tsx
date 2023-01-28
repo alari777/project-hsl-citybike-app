@@ -11,4 +11,10 @@ describe('should render header', () => {
     expect(navTrips).toBeInTheDocument();
     expect(navTrips).toMatchSnapshot();
   });
+
+  test('should render stations link in header navbar', () => {
+    const navStations = screen.getByTestId('nav-stations');
+    expect(navStations).toBeInTheDocument();
+    expect(navStations).toMatchSnapshot();
+  });
 });
