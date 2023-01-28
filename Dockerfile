@@ -4,6 +4,8 @@ WORKDIR /app
 COPY package.json package-lock.json* ./
 
 RUN npm ci
+RUN npx prisma init && \
+    rm -r /app/prisma
 COPY ./ ./
 
 ENV NODE_ENV production
@@ -12,4 +14,6 @@ RUN npm run build
 RUN npm prune --production
 
 EXPOSE 3000
-CMD npx prisma init && npx prisma generate && npx prisma db push && npm start
+CMD npx prisma generate && \
+    npx prisma db push && \
+    npm start
