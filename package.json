@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --colors",
+    "test": "jest --colors"
   },
   "dependencies": {
     "@next/font": "13.1.3",
