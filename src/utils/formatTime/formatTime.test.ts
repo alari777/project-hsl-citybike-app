@@ -36,3 +36,40 @@ describe('testing function formatTime(), right values', () => {
     expect(result).toBe('15.07.2022 19:33:04');
   });
 });
+
+describe('testing function formatTime(), wrong values', () => {
+  it('wrong data', () => {
+    const result = formatTime('wrong data');
+    expect(result).toBe('');
+  });
+
+  it('should return empty, wrong day: AA.07.2022 19:33:04', () => {
+    const result = formatTime('2022-07-AAT19:33:04.956Z');
+    expect(result).toBe('');
+  });
+
+  it('should return empty, wrong month', () => {
+    const result = formatTime('2022-AA-15T19:33:04.956Z');
+    expect(result).toBe('');
+  });
+
+  it('should return empty, wrong year: 15.07.AAAA 19:33:04', () => {
+    const result = formatTime('AAAA-07-15T19:33:04.956Z');
+    expect(result).toBe('');
+  });
+
+  it('should return empty, wrong hour: 15.07.2022 AA:33:04', () => {
+    const result = formatTime('2022-07-15TAA:33:04.956Z');
+    expect(result).toBe('');
+  });
+
+  it('should return empty, wrong minute: 15.07.2022 19:AA:04', () => {
+    const result = formatTime('2022-07-15T19:AA:04.956Z');
+    expect(result).toBe('');
+  });
+
+  it('should return empty, wrong second: 15.07.2022 19:33:AA', () => {
+    const result = formatTime('2022-07-15T19:33:AA.956Z');
+    expect(result).toBe('');
+  });
+});
