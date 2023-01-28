@@ -17,4 +17,10 @@ describe('should render header', () => {
     expect(navStations).toBeInTheDocument();
     expect(navStations).toMatchSnapshot();
   });
+
+  test('should render manage link in header navbar', () => {
+    const navManage = screen.getByTestId('nav-manage');
+    expect(navManage).toBeInTheDocument();
+    expect(navManage).toMatchSnapshot();
+  });
 });
