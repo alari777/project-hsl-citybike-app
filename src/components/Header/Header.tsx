@@ -8,13 +8,25 @@ const Header: FC = () => {
       <nav className='navbar navbar-expand-lg navbar-light'>
         <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
           <div className='navbar-nav'>
-            <Link className='nav-item nav-link active' href='/'>
+            <Link
+              data-testid='nav-trips'
+              className='nav-item nav-link active'
+              href='/'
+            >
               Trips
             </Link>
-            <Link className='nav-item nav-link' href='/stations'>
+            <Link
+              data-testid='nav-stations'
+              className='nav-item nav-link'
+              href='/stations'
+            >
               Stations
             </Link>
-            <Link className='nav-item nav-link' href='/manage'>
+            <Link
+              data-testid='nav-manage'
+              className='nav-item nav-link'
+              href='/manage'
+            >
               Manage: trips and stations
             </Link>
           </div>
