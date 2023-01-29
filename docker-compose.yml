@@ -9,6 +9,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
+    command: sh -c "npx prisma generate && npx prisma db push && npm start"
   db:
     image: mysql:5.7.22
     container_name: dbmysql
