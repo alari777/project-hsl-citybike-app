@@ -18,7 +18,7 @@ import { UpdateStationDTO } from '@/pages/api/v1/station/dto/updateStation.dto';
 const prisma = new PrismaClient();
 
 class Station {
-  // GET /api/v1/station/station
+  // GET /api/v1/stations/station
   @Get()
   async fetchStation(@Query('fid') fid: string) {
     // Find just one record.
@@ -39,7 +39,7 @@ class Station {
     return station;
   }
 
-  // POST /api/v1/station/station
+  // POST /api/v1/stations/station
   @Post()
   @HttpCode(201)
   async createStation(@Body(ValidationPipe) body: CreateStationDTO) {
@@ -52,7 +52,7 @@ class Station {
     return result;
   }
 
-  // DELETE /api/v1/station/station
+  // DELETE /api/v1/stations/station
   @Delete()
   @HttpCode(201)
   async deleteStation(@Body(ValidationPipe) body: DeleteStationDTO) {
@@ -68,7 +68,7 @@ class Station {
     return result;
   }
 
-  // PATCH /api/v1/station/station
+  // PATCH /api/v1/stations/station
   @Patch()
   @HttpCode(201)
   async updateStation(@Body(ValidationPipe) body: UpdateStationDTO) {
