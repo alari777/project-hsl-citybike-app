@@ -18,7 +18,7 @@ const StationsPage: FC<StationsPageProps> = ({ stations }) => {
   const onPageHandleClick = async (nextPageNumber: number): Promise<void> => {
     setIsLoading(false);
     try {
-      const response = await fetch(`/api/v1/station/${nextPageNumber}`, {
+      const response = await fetch(`/api/v1/stations/${nextPageNumber}`, {
         method: 'GET',
       });
       if (response.status === 200) {
