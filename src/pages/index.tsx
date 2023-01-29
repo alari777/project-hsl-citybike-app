@@ -38,7 +38,7 @@ const HomePage: FC<ManagePageProps> = ({ trips }) => {
     try {
       const { coveredDistance, duration } = filters;
       const response = await fetch(
-        `/api/v1/trip/${nextPageNumber}?distance=${coveredDistance}&duration=${duration}`,
+        `/api/v1/trips/${nextPageNumber}?distance=${coveredDistance}&duration=${duration}`,
         {
           method: 'GET',
         }

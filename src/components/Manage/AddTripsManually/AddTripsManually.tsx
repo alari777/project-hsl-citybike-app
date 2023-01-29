@@ -24,7 +24,7 @@ const AddTripsManually: FC<ManageComponentProps> = ({ stations }) => {
     setReport([]);
     setReport((report) => [...report, 'Wait a little bit. Trip is adding ...']);
     try {
-      const response = await fetch('/api/v1/trip/trip', {
+      const response = await fetch('/api/v1/trips/trip', {
         method: 'POST',
         headers: {
           Accept: 'application/json',

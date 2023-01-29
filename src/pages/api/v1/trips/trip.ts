@@ -11,14 +11,14 @@ import {
   ValidationPipe,
 } from 'next-api-decorators';
 import { PrismaClient } from '@prisma/client';
-import { CreateTripDTO } from '@/pages/api/v1/trip/dto/createTrip.dto';
-import { DeleteTripDTO } from '@/pages/api/v1/trip/dto/deleteTrip.dto';
-import { UpdateTripDTO } from '@/pages/api/v1/trip/dto/updateTrip.dto';
+import { CreateTripDTO } from '@/pages/api/v1/trips/dto/createTrip.dto';
+import { DeleteTripDTO } from '@/pages/api/v1/trips/dto/deleteTrip.dto';
+import { UpdateTripDTO } from '@/pages/api/v1/trips/dto/updateTrip.dto';
 
 const prisma = new PrismaClient();
 
 class Trip {
-  // GET /api/v1/trip/trip
+  // GET /api/v1/trips/trip
   @Get()
   async fetchTrip(@Query('id') id: string) {
     // Include section: is making operator like `join`.
@@ -39,7 +39,7 @@ class Trip {
     return trip;
   }
 
-  // POST /api/v1/trip/trip
+  // POST /api/v1/trips/trip
   @Post()
   @HttpCode(201)
   async createTrip(@Body(ValidationPipe) body: CreateTripDTO) {
@@ -52,7 +52,7 @@ class Trip {
     return result;
   }
 
-  // DELETE /api/v1/trip/trip
+  // DELETE /api/v1/trips/trip
   @Delete()
   @HttpCode(201)
   async deleteTrip(@Body(ValidationPipe) body: DeleteTripDTO) {
@@ -68,7 +68,7 @@ class Trip {
     return result;
   }
 
-  // PATCH /api/v1/trip/trip
+  // PATCH /api/v1/trips/trip
   @Patch()
   @HttpCode(201)
   async updateTrip(@Body(ValidationPipe) body: UpdateTripDTO) {
