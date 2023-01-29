@@ -11,12 +11,12 @@ type Top5Type = {
 };
 
 // This function gets all available stations
-export const getSlugStation = async (fid: string): Promise<string> => {
+export const getSlugStation = async (id: string): Promise<string> => {
   // Find just one record station.
   // It is like: `select` query with `limit 1`.
   const station = await prisma.stations.findMany({
     where: {
-      fid: Number(fid),
+      id: Number(id),
     },
     include: {
       _count: {
@@ -31,21 +31,21 @@ export const getSlugStation = async (fid: string): Promise<string> => {
   // For: the average distance of a journey starting from the station
   const totalDepartureDistance =
     await prisma.$queryRaw`SELECT SUM(d.coveredDistance) as dCoveredDistance FROM Trips AS d WHERE d.departureStationId = ${Number(
-      fid
+      id
     )}`;
 
   // For: the average distance of a journey ending at the station
   const totalReturnDistance =
     await prisma.$queryRaw`SELECT SUM(r.coveredDistance) as rCoveredDistance FROM Trips AS r WHERE r.returnStationId = ${Number(
-      fid
+      id
     )}`;
 
   // Top 5 most popular return stations for journeys starting from the station
   const topReturnStations: Top5Type[] =
-    await prisma.$queryRaw`SELECT t.departureStationId, s2.nameFi as name1, t.returnStationId, s1.nameFi as name2, COUNT(t.departureStationId) AS DepartureCount FROM Trips AS t  LEFT JOIN Stations AS s1 ON s1.fid = ${Number(
-      fid
-    )}  LEFT JOIN Stations AS s2 ON s2.fid = t.departureStationId  WHERE t.returnStationId = ${Number(
-      fid
+    await prisma.$queryRaw`SELECT t.departureStationId, s2.nameFi as name1, t.returnStationId, s1.nameFi as name2, COUNT(t.departureStationId) AS DepartureCount FROM Trips AS t  LEFT JOIN Stations AS s1 ON s1.id = ${Number(
+      id
+    )}  LEFT JOIN Stations AS s2 ON s2.id = t.departureStationId  WHERE t.returnStationId = ${Number(
+      id
     )} GROUP BY t.departureStationId ORDER BY DepartureCount DESC LIMIT 5`;
 
   const top5Return: Top5Type[] = [];
@@ -62,10 +62,10 @@ export const getSlugStation = async (fid: string): Promise<string> => {
 
   // Top 5 most popular departure stations for journeys ending at the station
   const topDepartureStations: Top5Type[] =
-    await prisma.$queryRaw`SELECT t.departureStationId, s2.nameFi as name1, t.returnStationId, s1.nameFi as name2, COUNT(t.returnStationId) AS DepartureCount FROM Trips AS t LEFT JOIN Stations AS s1 ON s1.fid = ${Number(
-      fid
-    )} LEFT JOIN Stations AS s2 ON s2.fid = t.returnStationId WHERE t.departureStationId = ${Number(
-      fid
+    await prisma.$queryRaw`SELECT t.departureStationId, s2.nameFi as name1, t.returnStationId, s1.nameFi as name2, COUNT(t.returnStationId) AS DepartureCount FROM Trips AS t LEFT JOIN Stations AS s1 ON s1.id = ${Number(
+      id
+    )} LEFT JOIN Stations AS s2 ON s2.id = t.returnStationId WHERE t.departureStationId = ${Number(
+      id
     )} GROUP BY t.returnStationId ORDER BY DepartureCount DESC LIMIT 5`;
 
   const top5Departure: Top5Type[] = [];

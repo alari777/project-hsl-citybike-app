@@ -86,7 +86,7 @@ const StationsPage: FC<StationsPageProps> = ({ stations }) => {
                 <td>
                   <ul>
                     <li>
-                      <Link href={`/stations/${station.fid}`}>View</Link>
+                      <Link href={`/stations/${station.id}`}>View</Link>
                     </li>
                     <li>Delete (soon)</li>
                     <li>Update (soon)</li>
