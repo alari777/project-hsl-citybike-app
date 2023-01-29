@@ -11,9 +11,9 @@ import {
   ValidationPipe,
 } from 'next-api-decorators';
 import { PrismaClient } from '@prisma/client';
-import { CreateTripDTO } from '@/pages/api/v1/trip/dto/createTrip.dto';
-import { DeleteTripDTO } from '@/pages/api/v1/trip/dto/deleteTrip.dto';
-import { UpdateTripDTO } from '@/pages/api/v1/trip/dto/updateTrip.dto';
+import { CreateTripDTO } from '@/pages/api/v1/trips/dto/createTrip.dto';
+import { DeleteTripDTO } from '@/pages/api/v1/trips/dto/deleteTrip.dto';
+import { UpdateTripDTO } from '@/pages/api/v1/trips/dto/updateTrip.dto';
 
 const prisma = new PrismaClient();
 
