@@ -33,7 +33,7 @@ const AddStationsManually: FC = () => {
       'Wait a little bit. Station is adding ...',
     ]);
     try {
-      const response = await fetch('/api/v1/station/station', {
+      const response = await fetch('/api/v1/stations/station', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
