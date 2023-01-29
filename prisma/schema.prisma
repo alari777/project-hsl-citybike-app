@@ -33,8 +33,8 @@ model Trips {
   returnStationId                             Int
   departureDate                               DateTime @db.DateTime(0)
   returnDate                                  DateTime @db.DateTime(0)
-  Stations_Trips_departureStationIdToStations Stations @relation("Trips_departureStationIdToStations", fields: [departureStationId], references: [fid])
-  Stations_Trips_returnStationIdToStations    Stations @relation("Trips_returnStationIdToStations", fields: [returnStationId], references: [fid])
+  Stations_Trips_departureStationIdToStations Stations @relation("Trips_departureStationIdToStations", fields: [departureStationId], references: [id])
+  Stations_Trips_returnStationIdToStations    Stations @relation("Trips_returnStationIdToStations", fields: [returnStationId], references: [id])
 
   @@index([departureStationId], map: "Trips_departureStationId_fkey")
   @@index([returnStationId], map: "Trips_returnStationId_fkey")
