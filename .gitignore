@@ -39,7 +39,13 @@ next-env.d.ts
 /.idea
 
 # env file
-.env
+# Attention! It is bad practice!
+# It is mandatory to add `.env` with secret variables in `.gitignore`.
+# But it is presentation project and in order to save time
+# (because for other people who will see this project and they will launch it
+# so they will need to create this file and add variables)
+# I have decided to save this file in the project and to set secret variables with default values.
+# .env
 
 # csv:s
 /public/upload/csv
