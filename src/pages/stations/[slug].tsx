@@ -35,7 +35,7 @@ const SingleStationPage: FC<SingleStationPageProps> = ({
       <table className='table'>
         <thead>
           <tr>
-            <th scope='col'>FID</th>
+            <th scope='col'>Station ID</th>
             <th scope='col'>Name FI</th>
             <th scope='col'>Name SWE</th>
             <th scope='col'>Name EN</th>
@@ -51,7 +51,7 @@ const SingleStationPage: FC<SingleStationPageProps> = ({
           {stations &&
             stations.map((station: StationType) => (
               <tr key={station.nameFi}>
-                <td>{station.fid}</td>
+                <td>{station.id}</td>
                 <td>{station.nameFi}</td>
                 <td>{station.nameSwe}</td>
                 <td>{station.nameEn}</td>
