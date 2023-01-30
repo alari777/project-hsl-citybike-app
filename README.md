@@ -1,7 +1,6 @@
 # Table of content
 
 [Getting Started](#getting_started)
-- [Spoiler](#spoiler)
 - [Introduction](#introduction)
 - [Objective](#objective)
 
@@ -12,4 +11,4 @@
 - [Description](#description)
 
 [In conclusion](#in_conclusion)  
-[Thank you!](#thank_you)  
+[Thank you!](#thank_you)
