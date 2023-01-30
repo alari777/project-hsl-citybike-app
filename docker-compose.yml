@@ -2,9 +2,7 @@ version: '3.9'
 services:
   dev_frontend:
     container_name: hsl_frontend
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/alari777/project-hsl-citybike-app/project-hsl-citybike-app:42001fbd736b8043870d9dc14435d9a8fc961437
     ports:
       - "3000:3000"
     depends_on:
