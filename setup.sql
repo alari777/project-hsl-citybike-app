@@ -1,4 +1,0 @@
-CREATE DATABASE hsl;
-GO
-USE hsl;
-GO

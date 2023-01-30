@@ -19,6 +19,6 @@ services:
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
-    command: --init-file /data/application/setup.sql
+    command: --init-file /data/application/init.sql
     volumes:
-      - ./setup.sql:/data/application/setup.sql
+      - ./init.sql:/data/application/init.sql
