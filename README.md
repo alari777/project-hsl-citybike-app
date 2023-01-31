@@ -21,6 +21,22 @@
 It is spoiler. You can see how this application works here:
 - Project [HSL citybike application](http://34.145.240.68/) at my custom google instance.
 
+## <a name="introduction">Introduction</a>
+This is "Helsinki city bike app".  
+
+Let's imagine that you have received an interesting project offer to create a UI and a backend service for displaying data from journeys made with city bikes in the Helsinki Capital area.  
+
+For the exercise download three datasets of journey data. The data is owned by City Bike Finland.  
+
+- https://dev.hsl.fi/citybikes/od-trips-2021/2021-05.csv
+- https://dev.hsl.fi/citybikes/od-trips-2021/2021-06.csv
+- https://dev.hsl.fi/citybikes/od-trips-2021/2021-07.csv  
+
+Also, there is a dataset that has information about Helsinki Region Transport’s (HSL) city bicycle stations.
+
+- Dataset: https://opendata.arcgis.com/datasets/726277c507ef4914b0aec3cbcfcbfafc_0.csv
+
+You can see full text of this pre-assigment at the next page [Helsinki city bike app](https://github.com/solita/dev-academy-2023-exercise).
 
 # <a name="how_to_start">How to start</a>
 
