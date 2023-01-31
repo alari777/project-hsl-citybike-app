@@ -10,6 +10,7 @@
 [GitHub actions](#github_actions)  
 [How it works](#how_it_works)
 - [Description](#description)
+- [Routes](#routes)
 
 [In conclusion](#in_conclusion)  
 [Thank you!](#thank_you)
