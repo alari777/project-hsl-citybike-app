@@ -3,7 +3,6 @@
 [Getting Started](#getting_started)
 - [Spoiler](#spoiler)
 - [Introduction](#introduction)
-- [Objective](#objective)
 
 [How to start](#how_to_start)  
 [Tests](#tests)  
