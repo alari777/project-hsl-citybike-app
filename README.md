@@ -129,22 +129,22 @@ You can find them in folder `.github/workflows/`:
 ## <a name="description">Description</a>
 
 This application has 3 pages and 1 slug-station page:
-    - The `index` (`trips`) page with trips:
-      - Table with pagination by 100 trips records.
-      - Two filters (and these filters work with pagination too)
-    - The `stations` page with stations:
-      - Table with pagination by 100 stations records.
-      - Link to `view` of current station.
-    - The `stations/[slug]` page:
-      - Table with some common information about current station and 4 additional values:
-        - Amount starting
-        - Average staring distance
-        - Amount ending
-        - Average ending distance
-      - Table with top 5 most popular return stations for journeys starting from the station
-      - Table with top 5 most popular departure stations for journeys ending at the station
-    The `manage` page:
-      - Import stations remotely by URL (example of this URL see here: [Introduction](#introduction))
-      - Add new station manually
-      - Import trips remotely by URL (examples of this URLs see here: [Introduction](#introduction))
-      - Add new trip manually
+- The `index` (`trips`) page with trips:
+  - Table with pagination by 100 trips records.
+  - Two filters (and these filters work with pagination too)
+- The `stations` page with stations:
+  - Table with pagination by 100 stations records.
+  - Link to `view` of current station.
+- The `stations/[slug]` page:
+  - Table with some common information about current station and 4 additional values:
+    - Amount starting
+    - Average staring distance
+    - Amount ending
+    - Average ending distance
+  - Table with top 5 most popular return stations for journeys starting from the station
+  - Table with top 5 most popular departure stations for journeys ending at the station
+The `manage` page:
+  - Import stations remotely by URL (example of this URL see here: [Introduction](#introduction))
+  - Add new station manually
+  - Import trips remotely by URL (examples of this URLs see here: [Introduction](#introduction))
+  - Add new trip manually
