@@ -99,3 +99,12 @@ This image is storing at `GitHub package repository`.
 Each merge with `main` branch (via pull requests) starts `GitHub action`. This action pushes new version of image of this application to `GitHub package repository`.  
 
 So thus `docker-compose.yml` consists the latest version of application.
+
+
+# <a name="github_actions">GitHub actions</a>
+
+After creating new `pull request` two GitHub actions: `run_tests` and `push_docker` are run.  
+You can find them in folder `.github/workflows/`:
+- Action `run_tests` runs tests.
+- Action `push_docker` creates Docker image of this project and pushes it in GitHub package.
+  This action depends on `run_tests`.
