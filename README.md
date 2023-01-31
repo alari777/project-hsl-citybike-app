@@ -148,3 +148,24 @@ The `manage` page:
   - Add new station manually
   - Import trips remotely by URL (examples of this URLs see here: [Introduction](#introduction))
   - Add new trip manually
+
+## <a name="routes">Routes</a>
+- Download
+  - Stations
+    - POST `/api/v1/download/station`. Add stations in database.
+  - Trips
+    - POST `/api/v1/download/trip`. Fetch trips and store these in CSV file.
+    - GET `/api/v1/download/trip`. Save these trips in DB from CSV file.
+- Stations
+  - GET `/api/v1/stations/station`. Get station by id.
+  - POST `/api/v1/stations/station`. Create station.
+  - DELETE `/api/v1/stations/station`. Delete station.
+  - PATCH `/api/v1/stations/station`. Update station.
+  - GET `/api/v1/stations/slug`. Get station by slug
+- Trips
+  - GET `/api/v1/trips/trip`. Get trip by id.
+  - POST `/api/v1/trips/trip`. Create trip.
+  - DELETE `/api/v1/trips/trip`. Delete trip.
+  - PATCH `/api/v1/trips/trip`. Update trip.
+- Search
+  - GET `/api/v1/search/slug`. Searching.
