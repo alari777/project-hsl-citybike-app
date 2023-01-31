@@ -1,4 +1,4 @@
-name: Run tests
+name: Publish docker and run tests
 on:
   push:
     branches:
@@ -17,3 +17,16 @@ jobs:
           node-version: "16"
       - run: npm ci
       - run: npm run test
+  push_docker:
+    name: Push Docker
+    needs: run_tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@v5
+        with:
+          name: alari777/project-hsl-citybike-app/project-hsl-citybike-app
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: ghcr.io

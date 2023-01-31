@@ -11,6 +11,8 @@ COPY ./ ./
 
 ENV NODE_ENV production
 
+RUN npx prisma generate
+
 RUN npm run build
 RUN npm prune --production
 
