@@ -42,10 +42,9 @@ You have few ways how to run this application:
         - `MySQL` version 5.6.22
         - (Optionally) `Docker` version 20.10.21 or higher
         - (Optionally) `Docker compose` version 2.13.0 or higher
-    - Go inside this folder and run next commands:  
+    - Start your MySQL server.
+    - Go inside created folder and run next commands:  
 ```
-# First off start your MySQL server
-
 # Clone this repository  
 git clone https://github.com/alari777/project-hsl-citybike-app.git .`
 
@@ -53,7 +52,8 @@ git clone https://github.com/alari777/project-hsl-citybike-app.git .`
 npm ci
 
 # Attention! It is bad practice!
-# It is mandatory to add `.env`, `.env.production`, `.env.development`, etc files like these with secret variables in `.gitignore`.
+# It is mandatory to add `.env`, `.env.production`, `.env.development`,  
+# etc files like these with secret variables in `.gitignore`.
 # But it is presentation project and in order to save time
 # (because for people who will see this project and they will launch it
 so they will need to create this file and add variables)
@@ -64,8 +64,9 @@ so they will need to create this file and add variables)
 # - For development mode: `.env.development`
 # - For production mode: `.env.production`
 
-# You need to run next command once after you have cloned this project in order to create the database structure via `prisma orm`.
-## In that case will be created next tables: Stations and Trips
+# You need to run next command once after you have cloned this project  
+# in order to create the database structure via `prisma orm`.
+# In that case will be created 2 tables: Stations and Trips
 npx prisma db push
 
 # In order to start this application in development mode.
@@ -79,15 +80,16 @@ npm start
 - Next way is on local machine or remote server via `docker compose`. It is production mode. 
   - Create a new folder on your local/remote machine.
   - Go inside.
-  - You have 2 ways how to start:
+  - You have 2 ways how to start.
+  - First way:
     - `git clone https://github.com/alari777/project-hsl-citybike-app.git .`
     - `docker-compose up -d`
-    OR
-    - Just create `docker-compose.yml` and copy there instructions from this `docker-compose.yml`
+  - Second way:
+    - Create `docker-compose.yml` and copy there instructions from current `docker-compose.yml`
     - `docker-compose up -d`
-  - In order to stop application use `docker-compose down`
+  - In order to stop application use `docker-compose down`.
     
-I need to explain.  
+I need to explain it.  
 
 The `docker-compose.yml` file consists 2 services: `prod_frontend` and `db`.  
 First off will be created and started service named `db` based on MySQL image. Then database named `hsl` will be created. After it `prod_frontend` service based on image of this application will be created and started.  
