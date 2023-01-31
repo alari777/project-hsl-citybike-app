@@ -3,13 +3,13 @@
 [Getting Started](#getting_started)
 - [Spoiler](#spoiler)
 - [Introduction](#introduction)
-- [Objective](#objective)
 
 [How to start](#how_to_start)  
 [Tests](#tests)  
 [GitHub actions](#github_actions)  
 [How it works](#how_it_works)
 - [Description](#description)
+- [Routes](#routes)
 
 [In conclusion](#in_conclusion)  
 [Thank you!](#thank_you)
@@ -20,6 +20,22 @@
 It is spoiler. You can see how this application works here:
 - Project [HSL citybike application](http://34.145.240.68/) at my custom google instance.
 
+## <a name="introduction">Introduction</a>
+This is "Helsinki city bike app".  
+
+Let's imagine that you have received an interesting project offer to create a UI and a backend service for displaying data from journeys made with city bikes in the Helsinki Capital area.  
+
+For the exercise download three datasets of journey data. The data is owned by City Bike Finland.  
+
+- https://dev.hsl.fi/citybikes/od-trips-2021/2021-05.csv
+- https://dev.hsl.fi/citybikes/od-trips-2021/2021-06.csv
+- https://dev.hsl.fi/citybikes/od-trips-2021/2021-07.csv  
+
+Also, there is a dataset that has information about Helsinki Region Transport’s (HSL) city bicycle stations.
+
+- Dataset: https://opendata.arcgis.com/datasets/726277c507ef4914b0aec3cbcfcbfafc_0.csv
+
+You can see full text of this pre-assigment at the next page [Helsinki city bike app](https://github.com/solita/dev-academy-2023-exercise).
 
 # <a name="how_to_start">How to start</a>
 
@@ -41,10 +57,9 @@ You have few ways how to run this application:
         - `MySQL` version 5.6.22
         - (Optionally) `Docker` version 20.10.21 or higher
         - (Optionally) `Docker compose` version 2.13.0 or higher
-    - Go inside this folder and run next commands:  
+    - Start your MySQL server.
+    - Go inside created folder and run next commands:  
 ```
-# First off start your MySQL server
-
 # Clone this repository  
 git clone https://github.com/alari777/project-hsl-citybike-app.git .`
 
@@ -52,7 +67,8 @@ git clone https://github.com/alari777/project-hsl-citybike-app.git .`
 npm ci
 
 # Attention! It is bad practice!
-# It is mandatory to add `.env`, `.env.production`, `.env.development`, etc files like these with secret variables in `.gitignore`.
+# It is mandatory to add `.env`, `.env.production`, `.env.development`,  
+# etc files like these with secret variables in `.gitignore`.
 # But it is presentation project and in order to save time
 # (because for people who will see this project and they will launch it
 so they will need to create this file and add variables)
@@ -63,8 +79,9 @@ so they will need to create this file and add variables)
 # - For development mode: `.env.development`
 # - For production mode: `.env.production`
 
-# You need to run next command once after you have cloned this project in order to create the database structure via `prisma orm`.
-## In that case will be created next tables: Stations and Trips
+# You need to run next command once after you have cloned this project  
+# in order to create the database structure via `prisma orm`.
+# In that case will be created 2 tables: Stations and Trips
 npx prisma db push
 
 # In order to start this application in development mode.
@@ -78,15 +95,16 @@ npm start
 - Next way is on local machine or remote server via `docker compose`. It is production mode. 
   - Create a new folder on your local/remote machine.
   - Go inside.
-  - You have 2 ways how to start:
+  - You have 2 ways how to start.
+  - First way:
     - `git clone https://github.com/alari777/project-hsl-citybike-app.git .`
     - `docker-compose up -d`
-    OR
-    - Just create `docker-compose.yml` and copy there instructions from this `docker-compose.yml`
+  - Second way:
+    - Create `docker-compose.yml` and copy there instructions from current `docker-compose.yml`
     - `docker-compose up -d`
-  - In order to stop application use `docker-compose down`
+  - In order to stop application use `docker-compose down`.
     
-I need to explain.  
+I need to explain it.  
 
 The `docker-compose.yml` file consists 2 services: `prod_frontend` and `db`.  
 First off will be created and started service named `db` based on MySQL image. Then database named `hsl` will be created. After it `prod_frontend` service based on image of this application will be created and started.  
@@ -96,3 +114,58 @@ This image is storing at `GitHub package repository`.
 Each merge with `main` branch (via pull requests) starts `GitHub action`. This action pushes new version of image of this application to `GitHub package repository`.  
 
 So thus `docker-compose.yml` consists the latest version of application.
+
+
+# <a name="github_actions">GitHub actions</a>
+
+After creating new `pull request` two GitHub actions: `run_tests` and `push_docker` are run.  
+You can find them in folder `.github/workflows/`:
+- Action `run_tests` runs tests.
+- Action `push_docker` creates Docker image of this project and pushes it in GitHub package.
+  This action depends on `run_tests`.
+
+# <a name="how_it_works">How it works</a>
+
+## <a name="description">Description</a>
+
+This application has 3 pages and 1 slug-station page:
+- The `index` (`trips`) page with trips:
+  - Table with pagination by 100 trips records.
+  - Two filters (and these filters work with pagination too)
+- The `stations` page with stations:
+  - Table with pagination by 100 stations records.
+  - Link to `view` of current station.
+- The `stations/[slug]` page:
+  - Table with some common information about current station and 4 additional values:
+    - Amount starting
+    - Average staring distance
+    - Amount ending
+    - Average ending distance
+  - Table with top 5 most popular return stations for journeys starting from the station
+  - Table with top 5 most popular departure stations for journeys ending at the station
+The `manage` page:
+  - Import stations remotely by URL (example of this URL see here: [Introduction](#introduction))
+  - Add new station manually
+  - Import trips remotely by URL (examples of this URLs see here: [Introduction](#introduction))
+  - Add new trip manually
+
+## <a name="routes">Routes</a>
+- Download
+  - Stations
+    - POST `/api/v1/download/station`. Add stations in database.
+  - Trips
+    - POST `/api/v1/download/trip`. Fetch trips and store these in CSV file.
+    - GET `/api/v1/download/trip`. Save these trips in DB from CSV file.
+- Stations
+  - GET `/api/v1/stations/station`. Get station by id.
+  - POST `/api/v1/stations/station`. Create station.
+  - DELETE `/api/v1/stations/station`. Delete station.
+  - PATCH `/api/v1/stations/station`. Update station.
+  - GET `/api/v1/stations/slug`. Get station by slug
+- Trips
+  - GET `/api/v1/trips/trip`. Get trip by id.
+  - POST `/api/v1/trips/trip`. Create trip.
+  - DELETE `/api/v1/trips/trip`. Delete trip.
+  - PATCH `/api/v1/trips/trip`. Update trip.
+- Search
+  - GET `/api/v1/search/slug`. Searching.
