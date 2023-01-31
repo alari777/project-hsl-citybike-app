@@ -1,10 +1,10 @@
 version: '3.9'
 services:
-  dev_frontend:
+  prod_frontend:
     container_name: hsl_frontend
     image: ghcr.io/alari777/project-hsl-citybike-app/project-hsl-citybike-app:latest
     ports:
-      - "3000:3000"
+      - "80:3000"
     links:
       - db
     depends_on:
