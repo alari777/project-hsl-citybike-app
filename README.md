@@ -25,7 +25,8 @@ This is "Helsinki city bike app".
 
 Let's imagine that you have received an interesting project offer to create a UI and a backend service for displaying data from journeys made with city bikes in the Helsinki Capital area.  
 
-For the exercise download three datasets of journey data. The data is owned by City Bike Finland.  
+For the exercise download three datasets of journey data.  
+The data is owned by City Bike Finland.  
 
 - https://dev.hsl.fi/citybikes/od-trips-2021/2021-05.csv
 - https://dev.hsl.fi/citybikes/od-trips-2021/2021-06.csv
@@ -33,7 +34,7 @@ For the exercise download three datasets of journey data. The data is owned by C
 
 Also, there is a dataset that has information about Helsinki Region Transport’s (HSL) city bicycle stations.
 
-- Dataset: https://opendata.arcgis.com/datasets/726277c507ef4914b0aec3cbcfcbfafc_0.csv
+- Stations: https://opendata.arcgis.com/datasets/726277c507ef4914b0aec3cbcfcbfafc_0.csv
 
 You can see full text of this pre-assigment at the next page [Helsinki city bike app](https://github.com/solita/dev-academy-2023-exercise).
 
@@ -152,20 +153,100 @@ The `manage` page:
 ## <a name="routes">Routes</a>
 - Download
   - Stations
-    - POST `/api/v1/download/station`. Add stations in database.
+    - POST `/api/v1/download/station`. Add stations in database.  
+    ```
+    BODY: 
+    {
+      url: string;
+    }
+    ```
   - Trips
     - POST `/api/v1/download/trip`. Fetch trips and store these in CSV file.
+      ```
+      BODY:
+      {
+        url: string;
+      }
+      ```
     - GET `/api/v1/download/trip`. Save these trips in DB from CSV file.
 - Stations
-  - GET `/api/v1/stations/station`. Get station by id.
+  - GET `/api/v1/stations/station?fid=STATION_FID`. Get station by fid.
   - POST `/api/v1/stations/station`. Create station.
+      ```
+      BODY:
+      {
+        id: number;
+        nameFi: string;
+        nameSwe: string;
+        nameEn: string;
+        addressFi: string;
+        addressSwe: string;
+        cityFi: string;
+        citySwe: string;
+        operator: string;
+        capacities: number;
+        coordinateX: number;
+        coordinateY: number;
+      }
+      ```
   - DELETE `/api/v1/stations/station`. Delete station.
+    ```
+    BODY:
+    {
+      fid: number;
+    }
+    ```
   - PATCH `/api/v1/stations/station`. Update station.
-  - GET `/api/v1/stations/slug`. Get station by slug
+    ```
+    BODY:
+    {
+      fid: number;
+      nameFi: string;
+      nameSwe: string;
+      nameEn: string;
+      addressFi: string;
+      addressSwe: string;
+      cityFi: string;
+      citySwe: string;
+      operator: string;
+      capacities: number;
+      coordinateX: number;
+      coordinateY: number;
+    }
+    ```
+  - GET `/api/v1/stations/[slug]`. Get station by slug
 - Trips
-  - GET `/api/v1/trips/trip`. Get trip by id.
+  - GET `/api/v1/trips/trip?id=TRIP_ID`. Get trip by id.
   - POST `/api/v1/trips/trip`. Create trip.
+    ```
+    BODY:
+    {
+      departureDate: Date;
+      returnDate: Date;
+      departureStationId: number;
+      returnStationId: number;
+      coveredDistance: number;
+      duration: number;
+    }
+    ```
   - DELETE `/api/v1/trips/trip`. Delete trip.
+    ```
+    BODY:
+    {
+      id: number;
+    }
+    ```
   - PATCH `/api/v1/trips/trip`. Update trip.
+    ```
+    BODY:
+    {
+      departureDate: Date;
+      returnDate: Date;
+      departureStationId: number;
+      returnStationId: number;
+      coveredDistance: number;
+      duration: number;
+    }
+    ```
 - Search
-  - GET `/api/v1/search/slug`. Searching.
+  - GET `/api/v1/search/[slug]`. Searching.
