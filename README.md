@@ -120,11 +120,11 @@ So thus `docker-compose.yml` consists the latest version of application.
 
 To start tests: `npm run test`
 
-![completed tests](./screenshots/readme/tests/tests.PNG)
+![completed tests](./public/screenshots/readme/tests/tests.PNG)
 
 To start coverage of tests: `npm run test:coverage`
 
-![tests coverage](./screenshots/readme/tests/tests-coverage.PNG)
+![tests coverage](./public/screenshots/readme/tests/tests-coverage.PNG)
 
 # <a name="github_actions">GitHub actions</a>
 
