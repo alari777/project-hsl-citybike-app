@@ -266,3 +266,5 @@ I want to improve this project:
 - Add `redux` to store a state.
 - Add e2e testing.
 - Add singleton class for `prisma` client.
+
+# <a name="thank_you">Thank you!</a>
