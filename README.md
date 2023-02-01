@@ -55,7 +55,7 @@ You have few ways how to run this application:
         - `npx` 8.1.2 or higher
         - `npm` 8.1.2 or higher
         - `git`
-        - `MySQL` version 5.6.22
+        - `MySQL` version 5.6.26
         - (Optionally) `Docker` version 20.10.21 or higher
         - (Optionally) `Docker compose` version 2.13.0 or higher
     - Start your MySQL server.
@@ -158,6 +158,23 @@ The `manage` page:
   - Add new station manually
   - Import trips remotely by URL (examples of this URLs see here: [Introduction](#introduction))
   - Add new trip manually
+
+In order to add stations please go on `Manage: trips and stations` page.  
+Then insert this URL: `https://opendata.arcgis.com/datasets/726277c507ef4914b0aec3cbcfcbfafc_0.csv` in `URL for fetching stations` and press `Import stations`.  
+Wait a little and available stations will be added in database soon.
+
+In order to add trips please go on `Manage: trips and stations` page.  
+Then insert e.g.  this URL: `https://dev.hsl.fi/citybikes/od-trips-2021/2021-05.csv` in `URL for fetching trips` and press `Import trips`.  
+Wait a little and available trips will be added in database soon.  
+Adding of trips is hard operation, so it was split on 2 sub-operations:
+- Fetching data, prepare data and create new csv file with trips (e.g. there no trips where distance is less 10 metres or time durations is less 10 seconds).
+- Adding data in database.
+
+Of course, you can add stations and trips manually.  
+
+After adding stations and trips you can go on `Trips` page where you can see all available trips.  
+Also, you can go on `Stations` page where you can see all available stations. You can see more additional information about current station.  
+For this one just move by link `view`.
 
 ## <a name="routes">Routes</a>
 - Download
