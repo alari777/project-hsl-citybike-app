@@ -259,3 +259,12 @@ The `manage` page:
     ```
 - Search
   - GET `/api/v1/search/[slug]`. Searching.
+
+# <a name="in_conclusion">In conclusion</a>
+
+I want to improve this project:
+- Add `redux` to store a state.
+- Add e2e testing.
+- Add singleton class for `prisma` client.
+
+# <a name="thank_you">Thank you!</a>
