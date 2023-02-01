@@ -116,6 +116,15 @@ Each merge with `main` branch (via pull requests) starts `GitHub action`. This a
 
 So thus `docker-compose.yml` consists the latest version of application.
 
+# <a name="tests">Tests</a>
+
+To start tests: `npm run test`
+
+![completed tests](./screenshots/readme/tests/tests.PNG)
+
+To start coverage of tests: `npm run test:coverage`
+
+![tests coverage](./screenshots/readme/tests/tests-coverage.PNG)
 
 # <a name="github_actions">GitHub actions</a>
 
