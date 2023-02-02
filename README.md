@@ -159,6 +159,8 @@ The `manage` page:
   - Import trips remotely by URL (examples of this URLs see here: [Introduction](#introduction))
   - Add new trip manually
 
+In order to clear database click on the button `Truncate tables Trips and Stations`.  
+
 In order to add stations please go on `Manage: trips and stations` page.  
 Then insert this URL: `https://opendata.arcgis.com/datasets/726277c507ef4914b0aec3cbcfcbfafc_0.csv` in `URL for fetching stations` and press `Import stations`.  
 Wait a little and available stations will be added in database soon.
