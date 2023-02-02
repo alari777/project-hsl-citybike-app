@@ -47,19 +47,24 @@ You have few ways how to run this application:
     - Project [HSL citybike application](http://34.145.240.68/) at my custom google instance.
       It is custom instance at `google.cloud` where is running docker container with this project inside.  
       That is a better way to see how this application works.
-- Next way is on local machine. Create a new folder on your local machine.
-    - System Requirements:
-        - [NodeJS](https://nodejs.org/en/).  
-          Open your terminal and type `node --version`.  
-          It has to be 14.6.0 or higher.
-        - `npx` 8.1.2 or higher
-        - `npm` 8.1.2 or higher
-        - `git`
-        - `MySQL` version 5.6.26
-        - (Optionally) `Docker` version 20.10.21 or higher
-        - (Optionally) `Docker compose` version 2.13.0 or higher
-    - Start your MySQL server.
-    - Go inside created folder and run next commands:  
+- Next way and most easy way is on local machine.  
+Create a new folder on your local machine and go inside this folder.
+System Requirements:  
+  - [NodeJS](https://nodejs.org/en/).  
+  Open your terminal and type `node --version`.  
+  It has to be 14.6.0 or higher.
+  - `npx` 8.1.2 or higher
+  - `npm` 8.1.2 or higher
+  - `git`
+  - `MySQL` version 5.6.26.  
+  If you use higher version then you need to disable `ONLY_FULL_GROUP_BY`.  
+  For this one make this SQL command `SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));`
+  - (Optionally) `Docker` version 20.10.21 or higher
+  - (Optionally) `Docker compose` version 2.13.0 or higher  
+
+First off start your MySQL server.  
+Then create database named `hsl`.    
+Then open terminal in this folder and complete next commands:  
 ```
 # Clone this repository  
 git clone https://github.com/alari777/project-hsl-citybike-app.git .`
@@ -67,18 +72,20 @@ git clone https://github.com/alari777/project-hsl-citybike-app.git .`
 # Install all dependencies   
 npm ci
 
+#####################################################################
 # Attention! It is bad practice!
 # It is mandatory to add `.env`, `.env.production`, `.env.development`,  
 # etc files like these with secret variables in `.gitignore`.
 # But it is presentation project and in order to save time
 # (because for people who will see this project and they will launch it
-so they will need to create this file and add variables)
+# so they will need to create this file and add variables)
 # I have decided to save these files in the project and to set secret variables with default values.
 
 # Set your credentials of MySQL for development mode in:
 # - For `prisma`: `.env`
 # - For development mode: `.env.development`
 # - For production mode: `.env.production`
+#####################################################################
 
 # You need to run next command once after you have cloned this project  
 # in order to create the database structure via `prisma orm`.
@@ -93,7 +100,7 @@ npm run dev
 npm run build  
 npm start
 ```
-- Next way is on local machine or remote server via `docker compose`. It is production mode. 
+- Next way is on local machine or remote server via `docker compose`. It is PRODUCTION MODE. 
   - Create a new folder on your local/remote machine.
   - Go inside.
   - You have 2 ways how to start.
@@ -116,6 +123,10 @@ Each merge with `main` branch (via pull requests) starts `GitHub action`. This a
 
 So thus `docker-compose.yml` consists the latest version of application.
 
+You can play wit different way how to start thi application yourself.  
+Change `port` in `docker-compose.yml` or use current `Docker` file instead image of application.  
+
+![tests coverage](./public/screenshots/readme/how-to-start/docker-compose.png)
 # <a name="tests">Tests</a>
 
 To start tests: `npm run test`
