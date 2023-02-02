@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import AddStationsRemotely from '@/components/Manage/AddStationsRemotely/AddStationsRemotely';
 import AddStationsManually from '@/components/Manage/AddStationsManually/AddStationsManually';
 import AddTripsRemotely from '@/components/Manage/AddTripsRemotely/AddTripsRemotely';
@@ -10,6 +10,8 @@ interface ManageComponentProps {
 }
 
 const Manage: FC<ManageComponentProps> = ({ stations }) => {
+  const [classSpinner, setClassSpinner] = useState<boolean>(false);
+  
   const truncateTables = async ():Promise<void> => {
     try {
       const response = await fetch('/api/v1/truncate/all', {
