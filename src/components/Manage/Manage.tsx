@@ -22,7 +22,7 @@ const Manage: FC<ManageComponentProps> = ({ stations }) => {
   }
   return (
     <>
-      <button onClick={truncateTables}>Truncate tables Trips and Stations</button>
+      <button className='btn btn-primary mb-5' onClick={truncateTables}>Truncate tables Trips and Stations</button>
       <AddStationsRemotely />
       <AddStationsManually />
       <AddTripsRemotely />
