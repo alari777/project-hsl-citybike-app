@@ -12,6 +12,7 @@ interface ManageComponentProps {
 const Manage: FC<ManageComponentProps> = ({ stations }) => {
   return (
     <>
+      <button>Clear tables Trips and Stations</button>
       <AddStationsRemotely />
       <AddStationsManually />
       <AddTripsRemotely />
