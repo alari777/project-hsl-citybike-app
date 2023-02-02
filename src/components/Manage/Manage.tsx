@@ -11,8 +11,9 @@ interface ManageComponentProps {
 
 const Manage: FC<ManageComponentProps> = ({ stations }) => {
   const [classSpinner, setClassSpinner] = useState<boolean>(false);
-  
-  const truncateTables = async ():Promise<void> => {
+
+  const truncateTables = async (): Promise<void> => {
+    setClassSpinner(true);
     try {
       const response = await fetch('/api/v1/truncate/all', {
         method: 'DELETE',
@@ -21,10 +22,20 @@ const Manage: FC<ManageComponentProps> = ({ stations }) => {
         console.log('ok');
       }
     } catch (err) {}
-  }
+    setClassSpinner(false);
+  };
   return (
     <>
-      <button className='btn btn-primary mb-5' onClick={truncateTables}>Truncate tables Trips and Stations</button>
+      <button className='btn btn-primary mb-5' onClick={truncateTables}>
+        {classSpinner && (
+          <span
+            className='spinner-border spinner-border-sm'
+            role='status'
+            aria-hidden='true'
+          ></span>
+        )}
+        Truncate tables Trips and Stations
+      </button>
       <AddStationsRemotely />
       <AddStationsManually />
       <AddTripsRemotely />
