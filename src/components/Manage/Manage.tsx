@@ -10,6 +10,7 @@ interface ManageComponentProps {
 }
 
 const Manage: FC<ManageComponentProps> = ({ stations }) => {
+  const [report, setReport] = useState<string[]>([]);
   const [classSpinner, setClassSpinner] = useState<boolean>(false);
 
   const truncateTables = async (): Promise<void> => {
