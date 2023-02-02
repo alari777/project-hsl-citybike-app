@@ -4,6 +4,7 @@ import AddStationsManually from '@/components/Manage/AddStationsManually/AddStat
 import AddTripsRemotely from '@/components/Manage/AddTripsRemotely/AddTripsRemotely';
 import AddTripsManually from '@/components/Manage/AddTripsManually/AddTripsManually';
 import { StationType } from '@/types/manage.types';
+import TruncateTables from '@/components/Manage/TruncateTables/TruncateTables';
 
 interface ManageComponentProps {
   stations: StationType[];
@@ -12,6 +13,7 @@ interface ManageComponentProps {
 const Manage: FC<ManageComponentProps> = ({ stations }) => {
   return (
     <>
+      <TruncateTables />
       <AddStationsRemotely />
       <AddStationsManually />
       <AddTripsRemotely />
