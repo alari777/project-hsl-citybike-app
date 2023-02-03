@@ -40,7 +40,8 @@ You can see full text of this pre-assigment at the next page [Helsinki city bike
 
 # <a name="how_to_start">How to start</a>
 
-This public project works at NextJS with TypeScript supporting.
+This public project works at NextJS with TypeScript supporting.  
+Database is MySQL version 5.6.26.  
 
 You have few ways how to run this application:
 - You can open:
@@ -58,16 +59,18 @@ System Requirements:
   - `git`
   - `MySQL` version 5.6.26.  
   If you use higher version then you need to disable `ONLY_FULL_GROUP_BY`.  
-  For this one make this SQL command `SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));`
-  - (Optionally) `Docker` version 20.10.21 or higher
-  - (Optionally) `Docker compose` version 2.13.0 or higher  
+  For this one make this SQL command:  
+  `SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));`  
+  Optionally:
+  - `Docker` version 20.10.21 or higher.
+  - `Docker compose` version 2.13.0 or higher.  
 
 First off start your MySQL server.  
 Then create database named `hsl`.    
 Then open terminal in this folder and complete next commands:  
 ```
 # Clone this repository  
-git clone https://github.com/alari777/project-hsl-citybike-app.git .`
+git clone https://github.com/alari777/project-hsl-citybike-app.git .
 
 # Install all dependencies   
 npm ci
@@ -93,7 +96,7 @@ npm ci
 npx prisma db push
 
 # In order to start this application in development mode.
-# This application will start on [http://localhost:3000](http://localhost:3000)    
+# This application will start on http://localhost:3000      
 npm run dev 
 
 # In order to build application and run  
@@ -108,8 +111,9 @@ npm start
     - `git clone https://github.com/alari777/project-hsl-citybike-app.git .`
     - `docker-compose up -d`
   - Second way:
-    - Create `docker-compose.yml` and copy there instructions from current `docker-compose.yml`
-    - `docker-compose up -d`
+    - Create `docker-compose.yml` and copy there instructions from current `docker-compose.yml`.
+    - Create `init.sql` file and copy there instructions from current `init.sql`.
+    - Make `docker-compose up -d`
   - In order to stop application use `docker-compose down`.
     
 I need to explain it.  
@@ -289,6 +293,8 @@ For this one just move by link `view`.
     ```
 - Search
   - GET `/api/v1/search/[slug]`. Searching.
+- Truncate tables
+  - DELETE `/api/v1/truncate/all`. Truncate `Trips` and `Stations` tables.
 
 # <a name="in_conclusion">In conclusion</a>
 
